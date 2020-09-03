@@ -11,14 +11,17 @@ plugins {
 }
 
 allprojects {
+
     repositories {
         google()
         jcenter()
         maven(url = "https://jitpack.io")
         maven("https://dl.bintray.com/kotlin/kotlin-eap")
     }
+
     apply(plugin = BuildPlugins.dokkaPlugin)
     apply(plugin = BuildPlugins.ktlintPlugin)
+
     ktlint {
         android.set(true)
         verbose.set(true)

@@ -1,5 +1,6 @@
 pluginManagement {
-    repositories {
+
+repositories {
         jcenter()
         google()
         gradlePluginPortal()
@@ -23,5 +24,6 @@ pluginManagement {
         }
     }
 }
+
 include("app")
 rootProject.name = "GradlePlugins"

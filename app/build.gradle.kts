@@ -4,6 +4,7 @@ plugins {
     id(BuildPlugins.kotlinAndroidExtensions)
     id(BuildPlugins.ktlintPlugin)
 }
+
 android {
     compileSdkVersion(AndroidSDK.compile)
     buildToolsVersion("30.0.1")
