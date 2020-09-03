@@ -1,7 +1,8 @@
-package com.mylivn
+package com.mylivn.ui.views
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.mylivn.R
 
 /**
  *  Main Activity which is the Launcher Activity
