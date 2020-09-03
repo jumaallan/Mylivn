@@ -6,8 +6,13 @@ plugins {
 }
 
 android {
+
     compileSdkVersion(AndroidSDK.compile)
     buildToolsVersion("30.0.1")
+
+    android.buildFeatures.dataBinding = true
+    android.buildFeatures.viewBinding = true
+
     defaultConfig {
         applicationId = "com.mylivn"
         minSdkVersion(AndroidSDK.min)
@@ -20,17 +25,22 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
     dependencies {
         implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
         implementation(Libraries.kotlinStandardLibrary)
-        implementation(Libraries.appCompat)
         implementation(Libraries.ktxCore)
+
+        implementation(Libraries.appCompat)
         implementation(Libraries.constraintLayout)
         implementation(Libraries.materialComponents)
+
         testImplementation(TestLibraries.junit4)
         androidTestImplementation(TestLibraries.testRunner)
         androidTestImplementation(TestLibraries.espresso)
