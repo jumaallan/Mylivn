@@ -1,7 +1,7 @@
-package ke.co.appslab.gradleplugins
+package com.mylivn
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
 /**
  *  Main Activity which is the Launcher Activity
