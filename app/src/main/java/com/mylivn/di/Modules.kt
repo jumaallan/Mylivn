@@ -2,7 +2,10 @@ package com.mylivn.di
 
 import androidx.room.Room
 import com.mylivn.data.Database
+import com.mylivn.data.repository.HeroRepository
+import com.mylivn.ui.viewmodels.HeroViewModel
 import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -35,11 +38,11 @@ private val daoModule: Module = module {
 }
 
 private val repositoryModule: Module = module {
-
+    single { HeroRepository(get(), get()) }
 }
 
 private val viewModelModule: Module = module {
-
+    viewModel { HeroViewModel(get()) }
 }
 
 val appModules: List<Module> = listOf(
