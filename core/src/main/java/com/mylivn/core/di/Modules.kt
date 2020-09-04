@@ -3,6 +3,7 @@ package com.mylivn.core.di
 import android.content.Context
 import com.google.gson.GsonBuilder
 import com.mylivn.core.BuildConfig
+import com.mylivn.core.data.api.HeroAPI
 import com.mylivn.core.network.AuthInterceptor
 import com.mylivn.core.settings.Settings
 import com.mylivn.core.utils.Constants
@@ -13,6 +14,7 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import java.util.concurrent.TimeUnit
 
 /**
@@ -57,7 +59,7 @@ private val networkingModule: Module = module {
 }
 
 val apiModule: Module = module {
-    //single<StarWarsAPI> { get<Retrofit>().create() }
+    single<HeroAPI> { get<Retrofit>().create() }
 }
 
 val settingsModule: Module = module {

@@ -7,5 +7,5 @@ package com.mylivn.core.utils
  */
 object Constants {
 
-    const val BASE_URL = "https://developer.marvel.com/"
+    const val BASE_URL = "https://gateway.marvel.com:443/"
 }
