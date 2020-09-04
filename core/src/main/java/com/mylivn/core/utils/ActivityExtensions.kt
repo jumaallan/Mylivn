@@ -10,6 +10,7 @@ import android.widget.Toast
 /**
  * Responsible for making the status bar transparent
  */
+@Suppress("DEPRECATION")
 fun Activity.makeStatusBarTransparent() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         window.apply {
