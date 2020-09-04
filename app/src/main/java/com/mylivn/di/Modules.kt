@@ -3,7 +3,9 @@ package com.mylivn.di
 import androidx.room.Room
 import com.mylivn.data.Database
 import com.mylivn.data.repository.HeroRepository
+import com.mylivn.data.repository.ThemeRepository
 import com.mylivn.ui.viewmodels.HeroViewModel
+import com.mylivn.ui.viewmodels.ThemeViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -39,10 +41,12 @@ private val daoModule: Module = module {
 
 private val repositoryModule: Module = module {
     single { HeroRepository(get(), get()) }
+    single { ThemeRepository(get()) }
 }
 
 private val viewModelModule: Module = module {
     viewModel { HeroViewModel(get()) }
+    viewModel { ThemeViewModel(get()) }
 }
 
 val appModules: List<Module> = listOf(
