@@ -1,17 +1,20 @@
 package com.mylivn.ui.views
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.mylivn.R
+import com.mylivn.databinding.ActivityHeroBinding
 
 /**
  *  Hero Activity which is the Launcher Activity
  */
 
-class HeroActivity : AppCompatActivity() {
+class HeroActivity : BindingActivity<ActivityHeroBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_hero)
+
     }
+
+    override val layoutResId: Int
+        get() = R.layout.activity_hero
 }
