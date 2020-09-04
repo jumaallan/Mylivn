@@ -1,6 +1,6 @@
 package com.mylivn.core.data.models
 
-data class HeroResponse(
+data class HeroesResponse(
     val attributionHTML: String,
     val attributionText: String,
     val code: Int,
