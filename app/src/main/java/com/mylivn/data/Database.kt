@@ -2,10 +2,12 @@ package com.mylivn.data
 
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.mylivn.data.dao.HeroDao
+import com.mylivn.data.model.Hero
 
 @androidx.room.Database(
     entities = [
-        Character::class
+        Hero::class
     ],
     version = 1,
     exportSchema = false
@@ -13,5 +15,5 @@ import androidx.room.TypeConverters
 @TypeConverters(DateConverter::class)
 abstract class Database : RoomDatabase() {
 
-    abstract fun characterDao(): CharacterDao
+    abstract fun heroDao(): HeroDao
 }
