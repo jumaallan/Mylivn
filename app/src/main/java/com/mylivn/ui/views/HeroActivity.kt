@@ -5,13 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.mylivn.R
 
 /**
- *  Dashboard Activity which is the Launcher Activity
+ *  Hero Activity which is the Launcher Activity
  */
 
-class DashboardActivity : AppCompatActivity() {
+class HeroActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dashboard)
+        setContentView(R.layout.activity_hero)
     }
 }
