@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mylivn.data.repository.HeroRepository
-import com.mylivn.ui.adapter.HeroResponse
+import com.mylivn.repository.HeroRepository
+import com.mylivn.data.models.HeroResponse
 import kotlinx.coroutines.launch
 
 class HeroViewModel(

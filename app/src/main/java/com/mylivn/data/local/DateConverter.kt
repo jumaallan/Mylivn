@@ -1,4 +1,4 @@
-package com.mylivn.data
+package com.mylivn.data.local
 
 import androidx.room.TypeConverter
 import java.util.*

@@ -1,4 +1,4 @@
-package com.mylivn.data.repository
+package com.mylivn.repository
 
 import com.mylivn.core.settings.Settings
 import com.mylivn.core.utils.MylivnSharedPreferenceLiveData

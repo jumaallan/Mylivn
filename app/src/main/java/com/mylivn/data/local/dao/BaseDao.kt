@@ -1,4 +1,4 @@
-package com.mylivn.data.dao
+package com.mylivn.data.local.dao
 
 import androidx.room.Delete
 import androidx.room.Insert
