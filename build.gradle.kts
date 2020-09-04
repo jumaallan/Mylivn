@@ -2,16 +2,17 @@
 plugins {
     id(BuildPlugins.ktlintPlugin) version Versions.ktlint
     id(BuildPlugins.detektPlugin) version Versions.detekt
+    id(BuildPlugins.spotlessPlugin) version Versions.spotless
     id(BuildPlugins.androidLibrary) apply false
     id(BuildPlugins.androidApplication) apply false
     id(BuildPlugins.kotlinAndroid) apply false
     id(BuildPlugins.kotlinAndroidExtensions) apply false
     id(BuildPlugins.dokkaPlugin) version Versions.dokka
     id(BuildPlugins.gradleVersionsPlugin) version Versions.gradleVersionsPlugin
+    jacoco
 }
 
 allprojects {
-
     repositories {
         google()
         jcenter()
@@ -21,7 +22,7 @@ allprojects {
 
     apply(plugin = BuildPlugins.dokkaPlugin)
     apply(plugin = BuildPlugins.ktlintPlugin)
-
+    apply(plugin = BuildPlugins.spotlessPlugin)
     ktlint {
         android.set(true)
         verbose.set(true)
@@ -34,6 +35,7 @@ allprojects {
 subprojects {
     apply(plugin = BuildPlugins.detektPlugin)
     detekt {
+        config = files("${project.rootDir}/detekt.yml")
         parallel = true
     }
 }

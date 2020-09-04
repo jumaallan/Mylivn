@@ -1,6 +1,5 @@
 pluginManagement {
-
-repositories {
+    repositories {
         jcenter()
         google()
         gradlePluginPortal()
@@ -25,5 +24,6 @@ repositories {
     }
 }
 
-include("app")
-rootProject.name = "GradlePlugins"
+include(":core")
+include(":app")
+rootProject.name = "Mylivn"
