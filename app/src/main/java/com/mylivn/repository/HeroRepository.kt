@@ -1,10 +1,10 @@
-package com.mylivn.data.repository
+package com.mylivn.repository
 
 import com.mylivn.core.data.api.HeroAPI
 import com.mylivn.core.data.models.HeroesResponse
 import com.mylivn.core.network.NetworkResult
 import com.mylivn.core.network.safeApiCall
-import com.mylivn.data.dao.HeroDao
+import com.mylivn.data.local.dao.HeroDao
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 

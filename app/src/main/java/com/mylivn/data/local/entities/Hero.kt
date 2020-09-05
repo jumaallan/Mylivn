@@ -1,4 +1,4 @@
-package com.mylivn.data.model
+package com.mylivn.data.local.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

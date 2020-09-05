@@ -1,9 +1,9 @@
 package com.mylivn.di
 
 import androidx.room.Room
-import com.mylivn.data.Database
-import com.mylivn.data.repository.HeroRepository
-import com.mylivn.data.repository.ThemeRepository
+import com.mylivn.data.local.Database
+import com.mylivn.repository.HeroRepository
+import com.mylivn.repository.ThemeRepository
 import com.mylivn.ui.viewmodels.HeroViewModel
 import com.mylivn.ui.viewmodels.ThemeViewModel
 import org.koin.android.ext.koin.androidContext
