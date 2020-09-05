@@ -1,6 +1,6 @@
-## Trivago Interview Solution
+## Mylivn Interview Solution
 
-👀  Writing Trivago Interview Solution App using [Android Architecture Components](https://developer.android.com/topic/libraries/architecture/), in 100% Kotlin, using Android Jetpack Components. 
+👀  Writing Mylivn Interview Solution App using [Android Architecture Components](https://developer.android.com/topic/libraries/architecture/), in 100% Kotlin, using Android Jetpack Components. 
 
 ### Prerequisites 
 
@@ -20,24 +20,11 @@ Refer to this [issue](https://github.com/gradle/gradle/issues/10248), if you get
 
 ### Background
 
-Implement a small but scalable app which interacts with the open [Star Wars API](https://swapi.dev/). The app should contain 2 main areas:
+Create an Android App to display a feed similar to the feed we have in Mylivn application.
 
-- Character Search (Home Screen)
-- Character Details
+The feed is the entry point of our application where we operate data from plenty of channels and display them in a beautiful UI to the users.
 
-The following attributes should be displayed for the character details:
-
-- name
-- birth year
-- height (in cm and feet/inches)
-- name (species)
-- language (species)
-- homeworld (species)
-- population (planets)
-- films (movies the character appeared in)
-- opening crawl (detailed description of each movie)
-
-On app start, the user lands on the character search screen. The user can search for characters from the Star Wars universe. The result of the search should display a character list. When tapping on a character, details are displayed as defined above.
+According to our application, users see the feed immediately after logging in. We want to impress users with a relevant, beautiful and high-performing UI, therefore feed has to be sophisticated.
 
 ## Tech-stack
 
@@ -85,7 +72,7 @@ This sections mentions some of the issues that I have come across:
 
 - UI Tests fail on an Emulator running API 26 (Android 8), and are successful on an Emulator running API 29 (Android 10)
 
-- dokka documentation task doesn't work when run from the top level Trivago task
+- dokka documentation task doesn't work when run from the top level Mylivn task
 
 - The spotless plugin doesn't apply the license header, and the jacoco plugin doesn't work as expected. Need more research on how to set them up using gradle plugins
 
