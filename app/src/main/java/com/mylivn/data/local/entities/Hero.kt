@@ -9,4 +9,3 @@ data class Hero(
     var id: Long,
     var heroName: String,
 )
-

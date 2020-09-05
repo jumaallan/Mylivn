@@ -38,7 +38,6 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
                 }
             }
         )
-
     }
 
     override val layoutResId: Int

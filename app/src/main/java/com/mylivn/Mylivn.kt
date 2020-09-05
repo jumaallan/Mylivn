@@ -32,7 +32,6 @@ class Mylivn : Application() {
         initKoin()
         initStetho()
         initTimber()
-
     }
 
     private fun initKoin() {
