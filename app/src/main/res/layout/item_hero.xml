@@ -23,15 +23,14 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_medium">
+                android:layout_height="wrap_content">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageViewHeroAvatar"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:scaleType="center"
-                    app:layout_constraintDimensionRatio="H,9:14"
+                    app:layout_constraintDimensionRatio="H,6:5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -42,12 +41,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:textStyle="bold"
+                    android:padding="@dimen/padding_small"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageViewHeroAvatar"
-                    tools:text="Jedi" />
+                    tools:text="Iron Man" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
