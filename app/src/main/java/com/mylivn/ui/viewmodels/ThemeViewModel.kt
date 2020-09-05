@@ -2,7 +2,7 @@ package com.mylivn.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import com.mylivn.core.utils.MylivnSharedPreferenceLiveData
-import com.mylivn.data.repository.ThemeRepository
+import com.mylivn.repository.ThemeRepository
 
 /**
  * ThemeViewModel
