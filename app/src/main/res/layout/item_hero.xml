@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="hero"
+            type="com.mylivn.data.local.entities.Hero" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
