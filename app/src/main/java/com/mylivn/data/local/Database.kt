@@ -2,7 +2,7 @@ package com.mylivn.data.local
 
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.mylivn.data.local.dao.HeroDao
+import com.mylivn.data.local.dao.*
 import com.mylivn.data.local.entities.*
 
 @androidx.room.Database(
@@ -20,4 +20,8 @@ import com.mylivn.data.local.entities.*
 abstract class Database : RoomDatabase() {
 
     abstract fun heroDao(): HeroDao
+    abstract fun comicsDao(): ComicsDao
+    abstract fun eventsDao(): EventsDao
+    abstract fun seriesDao(): SeriesDao
+    abstract fun storiesDao(): StoriesDao
 }
