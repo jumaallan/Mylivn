@@ -1,10 +1,13 @@
 package com.mylivn.data.dao
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.paging.PagingData
 import com.mylivn.BaseTest
 import com.mylivn.data.sample.comicsSample
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import org.hamcrest.CoreMatchers.`is`
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -21,6 +24,6 @@ internal class ComicsDaoTest : BaseTest() {
     fun `test inserting and retrieving comics`() = runBlockingTest {
         comicsDao.insert(comicsSample)
         val comic = comicsDao.getHeroComics(1)
-        // MatcherAssert.assertThat(comic., `is`(testCharacters[0].name))
+        assertThat(comic, `is`(PagingData.from(comicsSample)))
     }
 }
