@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.Observer
 import com.mylivn.ui.viewmodels.ThemeViewModel
 import org.koin.android.ext.android.inject
 
@@ -25,8 +24,7 @@ abstract class BindingActivity<T : ViewDataBinding> : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, layoutResId)
 
         themeViewModel.getAppTheme().observe(
-            this,
-            Observer {
+            this, {
                 it.let {
                     when (it) {
                         "Light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)

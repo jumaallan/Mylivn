@@ -1,7 +1,6 @@
 package com.mylivn.ui.views
 
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import com.mylivn.R
 import com.mylivn.core.network.NetworkResult
 import com.mylivn.databinding.ActivityHeroBinding
@@ -28,8 +27,7 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
         marvelViewModel.getHeroes()
 
         marvelViewModel.heroesResponseState.observe(
-            this,
-            Observer {
+            this, {
                 when (val heroesResponse = it.heroes) {
                     is NetworkResult.Success -> {
                         Timber.d("Jumaaaa")
