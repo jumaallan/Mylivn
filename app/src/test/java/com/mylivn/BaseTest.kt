@@ -24,7 +24,7 @@ internal open class BaseTest {
     private lateinit var mockWebServer: MockWebServer
     private lateinit var okHttpClient: OkHttpClient
     private lateinit var loggingInterceptor: HttpLoggingInterceptor
-    private lateinit var heroAPI: HeroAPI
+    lateinit var heroAPI: HeroAPI
 
     // database and dao
     private lateinit var database: Database
