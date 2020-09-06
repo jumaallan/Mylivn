@@ -15,7 +15,7 @@ import com.mylivn.databinding.ItemComicsBinding
  */
 internal class ComicsRecyclerViewAdapter :
     ListAdapter<Comics, ComicsRecyclerViewAdapter.ViewHolder>(
-        CharacterFilmsDiffer
+        ComicsDiffer
     ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -37,7 +37,7 @@ internal class ComicsRecyclerViewAdapter :
         }
     }
 
-    companion object CharacterFilmsDiffer : DiffUtil.ItemCallback<Comics>() {
+    companion object ComicsDiffer : DiffUtil.ItemCallback<Comics>() {
         override fun areItemsTheSame(
             oldItem: Comics,
             newItem: Comics

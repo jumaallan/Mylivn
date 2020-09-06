@@ -15,7 +15,7 @@ import com.mylivn.databinding.ItemEventsBinding
  */
 internal class EventsRecyclerViewAdapter :
     ListAdapter<Events, EventsRecyclerViewAdapter.ViewHolder>(
-        CharacterFilmsDiffer
+        EventsDiffer
     ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -37,7 +37,7 @@ internal class EventsRecyclerViewAdapter :
         }
     }
 
-    companion object CharacterFilmsDiffer : DiffUtil.ItemCallback<Events>() {
+    companion object EventsDiffer : DiffUtil.ItemCallback<Events>() {
         override fun areItemsTheSame(
             oldItem: Events,
             newItem: Events
