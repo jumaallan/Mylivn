@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import com.mylivn.R
 import com.mylivn.core.network.NetworkResult
 import com.mylivn.databinding.ActivityHeroBinding
-import com.mylivn.ui.viewmodels.HeroViewModel
+import com.mylivn.ui.viewmodels.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -16,6 +16,10 @@ import timber.log.Timber
 class HeroActivity : BindingActivity<ActivityHeroBinding>() {
 
     private val heroViewModel: HeroViewModel by viewModel()
+    private val comicsViewModel: ComicsViewModel by viewModel()
+    private val eventsViewModel: EventsViewModel by viewModel()
+    private val seriesViewModel: SeriesViewModel by viewModel()
+    private val storiesViewModel: StoriesViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
