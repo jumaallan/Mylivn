@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="stories"
+            type="com.mylivn.data.local.entities.Stories" />
+    </data>
+
     <androidx.cardview.widget.CardView
         android:layout_width="170dp"
         android:layout_height="120dp"
