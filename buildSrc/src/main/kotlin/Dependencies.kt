@@ -20,6 +20,9 @@ object Versions {
     // Room db
     const val room = "2.3.0-alpha02"
 
+    // Paging
+    const val paging = "3.0.0-alpha06"
+
     // Lifecycle
     const val lifecycle = "2.3.0-alpha07"
 
@@ -103,6 +106,9 @@ object Libraries {
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
     const val room = "androidx.room:room-ktx:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+
+    // Paging
+    const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
 
     // Lifecycle
     const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"

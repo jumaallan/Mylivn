@@ -76,6 +76,9 @@ dependencies {
     implementation(Libraries.roomRuntime)
     kapt(Libraries.roomCompiler)
 
+    // Paging
+    implementation(Libraries.paging)
+
     // Coroutines
     implementation(Libraries.coroutines)
     implementation(Libraries.coroutinesAndroid)
