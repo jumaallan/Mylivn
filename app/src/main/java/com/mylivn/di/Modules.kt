@@ -42,7 +42,8 @@ private val daoModule: Module = module {
 }
 
 private val repositoryModule: Module = module {
-    single { HeroRepository(get(), get()) }
+    single { MarvelRepository(get(), get()) }
+    single { HeroRepository(get()) }
     single { ComicsRepository(get()) }
     single { EventsRepository(get()) }
     single { SeriesRepository(get()) }
@@ -51,6 +52,7 @@ private val repositoryModule: Module = module {
 }
 
 private val viewModelModule: Module = module {
+    viewModel { MarvelViewModel(get()) }
     viewModel { HeroViewModel(get()) }
     viewModel { ComicsViewModel(get()) }
     viewModel { EventsViewModel(get()) }

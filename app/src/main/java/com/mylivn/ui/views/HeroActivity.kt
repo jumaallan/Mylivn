@@ -15,6 +15,7 @@ import timber.log.Timber
 
 class HeroActivity : BindingActivity<ActivityHeroBinding>() {
 
+    private val marvelViewModel: MarvelViewModel by viewModel()
     private val heroViewModel: HeroViewModel by viewModel()
     private val comicsViewModel: ComicsViewModel by viewModel()
     private val eventsViewModel: EventsViewModel by viewModel()
@@ -24,9 +25,9 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        heroViewModel.getHeroes()
+        marvelViewModel.getHeroes()
 
-        heroViewModel.heroesResponseState.observe(
+        marvelViewModel.heroesResponseState.observe(
             this,
             Observer {
                 when (val heroesResponse = it.heroes) {
