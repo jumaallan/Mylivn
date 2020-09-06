@@ -14,9 +14,7 @@ class StoriesViewModelTest : BaseViewModelTest() {
 
     @Before
     fun setUp() {
-        storiesViewModel = StoriesViewModel(
-            storiesRepository
-        )
+        storiesViewModel = StoriesViewModel(storiesRepository)
     }
 
     @FlowPreview

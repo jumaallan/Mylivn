@@ -19,9 +19,7 @@ class MarvelViewModelTest : BaseViewModelTest() {
 
     @Before
     fun setUp() {
-        marvelViewModel = MarvelViewModel(
-            marvelRepository
-        )
+        marvelViewModel = MarvelViewModel(marvelRepository)
     }
 
     @FlowPreview
@@ -34,9 +32,7 @@ class MarvelViewModelTest : BaseViewModelTest() {
         coVerify { marvelRepository.fetchHeroes() }
 
         marvelViewModel.heroesResponseState.test().assertValue(
-            HeroResponse(
-                hero
-            )
+            HeroResponse(hero)
         )
 
     }

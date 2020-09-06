@@ -14,9 +14,7 @@ class SeriesViewModelTest : BaseViewModelTest() {
 
     @Before
     fun setUp() {
-        seriesViewModel = SeriesViewModel(
-            seriesRepository
-        )
+        seriesViewModel = SeriesViewModel(seriesRepository)
     }
 
     @FlowPreview

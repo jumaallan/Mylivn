@@ -14,9 +14,7 @@ class EventsViewModelTest : BaseViewModelTest() {
 
     @Before
     fun setUp() {
-        eventsViewModel = EventsViewModel(
-            eventRepository
-        )
+        eventsViewModel = EventsViewModel(eventRepository)
     }
 
     @FlowPreview

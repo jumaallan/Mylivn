@@ -14,9 +14,7 @@ class HeroViewModelTest : BaseViewModelTest() {
 
     @Before
     fun setUp() {
-        heroViewModel = HeroViewModel(
-            heroRepository
-        )
+        heroViewModel = HeroViewModel(heroRepository)
     }
 
     @FlowPreview

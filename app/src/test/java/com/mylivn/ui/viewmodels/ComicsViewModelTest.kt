@@ -14,9 +14,7 @@ class ComicsViewModelTest : BaseViewModelTest() {
 
     @Before
     fun setUp() {
-        comicsViewModel = ComicsViewModel(
-            comicsRepository
-        )
+        comicsViewModel = ComicsViewModel(comicsRepository)
     }
 
     @FlowPreview
