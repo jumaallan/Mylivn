@@ -28,11 +28,11 @@ internal open class BaseTest {
 
     // database and dao
     private lateinit var database: Database
-    private lateinit var comicsDao: ComicsDao
-    private lateinit var eventsDao: EventsDao
-    private lateinit var heroDao: HeroDao
-    private lateinit var seriesDao: SeriesDao
-    private lateinit var storiesDao: StoriesDao
+    protected lateinit var comicsDao: ComicsDao
+    protected lateinit var eventsDao: EventsDao
+    protected lateinit var heroDao: HeroDao
+    protected lateinit var seriesDao: SeriesDao
+    protected lateinit var storiesDao: StoriesDao
 
     @Before
     open fun setup() {
