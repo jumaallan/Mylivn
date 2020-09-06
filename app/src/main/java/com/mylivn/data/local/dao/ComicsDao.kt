@@ -10,5 +10,4 @@ interface ComicsDao : BaseDao<Comics> {
 
     @Query("SELECT * FROM comics WHERE heroId =:heroId")
     fun getHeroComics(heroId: Int): PagingSource<Int, Comics>
-
 }

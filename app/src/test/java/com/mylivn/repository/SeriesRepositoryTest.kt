@@ -21,7 +21,6 @@ internal class SeriesRepositoryTest : BaseTest() {
     @Test
     fun `test to fetch list of series for a hero`() {
         runBlocking {
-
         }
     }
 }

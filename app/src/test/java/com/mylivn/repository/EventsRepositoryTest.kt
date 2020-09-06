@@ -21,7 +21,6 @@ internal class EventsRepositoryTest : BaseTest() {
     @Test
     fun `test to fetch list of events for a hero`() {
         runBlocking {
-
         }
     }
 }

@@ -86,7 +86,6 @@ class HeroActivityTest : KoinTest {
         Unit
         Screen.idle(3000)
     }
-
 }
 
 class HeroScreen : Screen<HeroScreen>() {
@@ -97,7 +96,6 @@ class HeroScreen : Screen<HeroScreen>() {
             itemType(::HeroesItem)
         }
     )
-
 }
 
 class HeroesItem(parent: Matcher<View>) : KRecyclerItem<HeroesItem>(parent) {

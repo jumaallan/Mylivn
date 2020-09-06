@@ -21,7 +21,6 @@ internal class ComicsRepositoryTest : BaseTest() {
     @Test
     fun `test to fetch list of comics for a hero`() {
         runBlocking {
-
         }
     }
 }

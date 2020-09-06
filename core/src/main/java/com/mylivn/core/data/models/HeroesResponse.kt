@@ -5,7 +5,7 @@ data class HeroesResponse(
     val attributionText: String,
     val code: Int,
     val copyright: String,
-    val `data`: Data,
+    val data: Data,
     val etag: String,
     val status: String
 )

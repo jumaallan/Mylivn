@@ -16,5 +16,4 @@ class StoriesRepository(
             PagingConfig(pageSize = 40, enablePlaceholders = false, prefetchDistance = 3),
             pagingSourceFactory = { storiesDao.getHeroStories(heroId) }
         ).flow
-
 }

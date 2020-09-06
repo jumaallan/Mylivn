@@ -13,5 +13,4 @@ class EventsViewModel(
 
     fun getHeroEvents(heroId: Int): LiveData<PagingData<Events>> =
         eventsRepository.getHeroEvents(heroId).asLiveData()
-
 }

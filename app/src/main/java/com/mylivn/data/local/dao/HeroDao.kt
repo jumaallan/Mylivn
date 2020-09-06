@@ -9,5 +9,4 @@ interface HeroDao : BaseDao<Hero> {
 
     @Query("SELECT * FROM hero WHERE heroId =:heroId")
     fun getHero(heroId: Int): Hero
-
 }

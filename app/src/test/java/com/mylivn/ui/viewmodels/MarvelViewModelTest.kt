@@ -34,6 +34,5 @@ class MarvelViewModelTest : BaseViewModelTest() {
         marvelViewModel.heroesResponseState.test().assertValue(
             HeroResponse(hero)
         )
-
     }
 }

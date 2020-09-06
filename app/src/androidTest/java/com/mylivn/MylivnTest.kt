@@ -13,7 +13,6 @@ class MylivnTest : Application() {
         super.onCreate()
 
         initKoin()
-
     }
 
     private fun initKoin() {

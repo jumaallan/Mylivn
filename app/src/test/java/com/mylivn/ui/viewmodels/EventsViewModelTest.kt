@@ -20,6 +20,5 @@ class EventsViewModelTest : BaseViewModelTest() {
     @FlowPreview
     @Test
     fun `test to fetch list of events for a hero`() {
-
     }
 }

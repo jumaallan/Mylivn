@@ -16,5 +16,4 @@ class EventsRepository(
             PagingConfig(pageSize = 40, enablePlaceholders = false, prefetchDistance = 3),
             pagingSourceFactory = { eventsDao.getHeroEvents(heroId) }
         ).flow
-
 }

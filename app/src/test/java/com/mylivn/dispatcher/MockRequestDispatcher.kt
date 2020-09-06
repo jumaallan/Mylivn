@@ -13,7 +13,6 @@ open class MockRequestDispatcher : Dispatcher() {
         MockResponse()
             .setResponseCode(HttpURLConnection.HTTP_OK)
             .setBody(getJson("json/hero_response.json"))
-
 }
 
 fun getJson(path: String): String {

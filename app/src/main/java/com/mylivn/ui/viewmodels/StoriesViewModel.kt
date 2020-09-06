@@ -13,5 +13,4 @@ class StoriesViewModel(
 
     fun getHeroSeries(heroId: Int): LiveData<PagingData<Stories>> =
         storiesRepository.getHeroStories(heroId).asLiveData()
-
 }

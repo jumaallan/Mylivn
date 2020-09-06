@@ -13,5 +13,4 @@ class SeriesViewModel(
 
     fun getHeroSeries(heroId: Int): LiveData<PagingData<Series>> =
         seriesRepository.getHeroSeries(heroId).asLiveData()
-
 }

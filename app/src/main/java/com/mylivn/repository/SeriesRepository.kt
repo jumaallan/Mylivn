@@ -16,5 +16,4 @@ class SeriesRepository(
             PagingConfig(pageSize = 40, enablePlaceholders = false, prefetchDistance = 3),
             pagingSourceFactory = { seriesDao.getHeroSeries(heroId) }
         ).flow
-
 }

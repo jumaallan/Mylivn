@@ -20,6 +20,5 @@ class HeroViewModelTest : BaseViewModelTest() {
     @FlowPreview
     @Test
     fun `test to fetch list of heroes`() {
-
     }
 }

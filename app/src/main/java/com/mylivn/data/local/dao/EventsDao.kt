@@ -10,5 +10,4 @@ interface EventsDao : BaseDao<Events> {
 
     @Query("SELECT * FROM events WHERE heroId =:heroId")
     fun getHeroEvents(heroId: Int): PagingSource<Int, Events>
-
 }
