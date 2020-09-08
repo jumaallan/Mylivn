@@ -8,5 +8,6 @@ data class Series(
     @PrimaryKey(autoGenerate = true)
     var id: Long,
     var heroId: Int,
-    var heroName: String
+    var seriesName: String,
+    val resourceURI: String
 )

@@ -8,5 +8,6 @@ data class Events(
     @PrimaryKey(autoGenerate = true)
     var id: Long,
     var heroId: Int,
-    var heroName: String
+    var eventName: String,
+    val resourceURI: String
 )

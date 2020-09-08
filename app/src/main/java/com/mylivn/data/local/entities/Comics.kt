@@ -8,5 +8,6 @@ data class Comics(
     @PrimaryKey(autoGenerate = true)
     var id: Long,
     var heroId: Int,
-    var heroName: String
+    var comicName: String,
+    val resourceURI: String
 )

@@ -8,5 +8,7 @@ data class Stories(
     @PrimaryKey(autoGenerate = true)
     var id: Long,
     var heroId: Int,
-    var heroName: String
+    var storyName: String,
+    val resourceURI: String,
+    val type: String
 )
