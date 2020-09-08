@@ -7,7 +7,6 @@ import androidx.paging.PagingData
 import com.mylivn.core.data.api.MarvelAPI
 import com.mylivn.data.local.dao.*
 import com.mylivn.data.local.entities.Hero
-import com.mylivn.data.network.MarvelRemoteMediator
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -27,15 +26,15 @@ class MarvelRepository(
     fun fetchMarvelHeroes(): Flow<PagingData<Hero>> {
         return Pager(
             PagingConfig(pageSize = 40, enablePlaceholders = false, prefetchDistance = 3),
-            remoteMediator = MarvelRemoteMediator(
-                marvelAPI,
-                marvelKeysDao,
-                heroDao,
-                comicsDao,
-                eventsDao,
-                seriesDao,
-                storiesDao
-            ),
+//            remoteMediator = MarvelRemoteMediator(
+//                marvelAPI,
+//                marvelKeysDao,
+//                heroDao,
+//                comicsDao,
+//                eventsDao,
+//                seriesDao,
+//                storiesDao
+//            ),
             pagingSourceFactory = { heroDao.getHeroes() }
         ).flow
     }

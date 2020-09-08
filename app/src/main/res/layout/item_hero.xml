@@ -45,6 +45,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="@dimen/padding_small"
+                    android:text="@{hero.heroName}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.mylivn.core.utils.toHttps
 import com.mylivn.data.local.entities.Hero
 import com.mylivn.databinding.ItemHeroBinding
 
@@ -29,6 +31,7 @@ class HeroRecyclerViewAdapter :
 
         fun bind(hero: Hero) {
             binding.hero = hero
+            binding.imageViewHeroAvatar.load(hero.heroThumbnail.toHttps())
             binding.executePendingBindings()
         }
     }
