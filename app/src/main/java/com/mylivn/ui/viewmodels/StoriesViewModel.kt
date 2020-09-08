@@ -12,6 +12,6 @@ class StoriesViewModel(
     private val storiesRepository: StoriesRepository
 ) : ViewModel() {
 
-    fun getHeroSeries(heroId: Int): Flow<PagingData<Stories>> =
+    fun getHeroStories(heroId: Int): Flow<PagingData<Stories>> =
         storiesRepository.getHeroStories(heroId).cachedIn(viewModelScope)
 }
