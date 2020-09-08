@@ -2,7 +2,9 @@ package com.mylivn.ui.views
 
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.map
 import com.mylivn.R
+import com.mylivn.data.local.mappers.toModel
 import com.mylivn.databinding.ActivityHeroBinding
 import com.mylivn.ui.adapter.*
 import com.mylivn.ui.viewmodels.*
@@ -58,15 +60,15 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
 
     private fun fetchHeroes(heroId: Int) = lifecycleScope.launch {
         marvelViewModel.fetchMarvelHeroes()
-            .collectLatest { heroRecyclerViewAdapter.submitData(it) }
+            .collectLatest { heroRecyclerViewAdapter.submitData(it.map { hero -> hero.toModel() }) }
         comicsViewModel.getHeroComics(heroId)
-            .collectLatest { comicsRecyclerViewAdapter.submitData(it) }
+            .collectLatest { comicsRecyclerViewAdapter.submitData(it.map { comics -> comics.toModel() }) }
         seriesViewModel.getHeroSeries(heroId)
-            .collectLatest { seriesRecyclerViewAdapter.submitData(it) }
+            .collectLatest { seriesRecyclerViewAdapter.submitData(it.map { series -> series.toModel() }) }
         storiesViewModel.getHeroStories(heroId)
-            .collectLatest { storiesRecyclerViewAdapter.submitData(it) }
+            .collectLatest { storiesRecyclerViewAdapter.submitData(it.map { stories -> stories.toModel() }) }
         eventsViewModel.getHeroEvents(heroId)
-            .collectLatest { eventsRecyclerViewAdapter.submitData(it) }
+            .collectLatest { eventsRecyclerViewAdapter.submitData(it.map { events -> events.toModel() }) }
     }
 
     override val layoutResId: Int
