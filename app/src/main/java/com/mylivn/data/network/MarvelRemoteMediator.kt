@@ -38,9 +38,7 @@ class MarvelRemoteMediator(
                     "a5df6fc2b951d20f5aaef40803ab166c",
                     "d1489c94740f45d9c0fd62234fb2432a",
                     "1",
-                    loadSize = state.config.pageSize,
-                    after = remoteKey?.after,
-                    before = remoteKey?.before
+                    limit = state.config.pageSize
                 )
             }
             when (marvelResponse) {

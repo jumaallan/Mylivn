@@ -11,8 +11,6 @@ interface MarvelAPI {
         @Query("apikey") apiKey: String,
         @Query("hash") hash: String,
         @Query("ts") timeStamp: String,
-        @Query("limit") loadSize: Int = 0,
-        @Query("after") after: String? = null,
-        @Query("before") before: String? = null
+        @Query("limit") limit: Int = 0
     ): HeroesResponse
 }

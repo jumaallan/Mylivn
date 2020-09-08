@@ -7,11 +7,19 @@ import androidx.paging.cachedIn
 import com.mylivn.data.local.entities.Hero
 import com.mylivn.repository.MarvelRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 
 class MarvelViewModel(
     private val marvelRepository: MarvelRepository
 ) : ViewModel() {
 
     fun fetchMarvelHeroes(): Flow<PagingData<Hero>> =
-        marvelRepository.fetchMarvelHeroes().cachedIn(viewModelScope)
+        marvelRepository.getMarvelHeroes()
+
+
+    fun fetchCharacters(){
+        viewModelScope.launch {
+            marvelRepository.fetchMarvelHeroes()
+        }
+    }
 }
