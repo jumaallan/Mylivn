@@ -7,6 +7,5 @@ class HeroRepository(
     private val heroDao: HeroDao,
 ) {
 
-    fun getHero(heroId: Int): Hero =
-        heroDao.getHero(heroId)
+    suspend fun getHero(heroId: Int): Hero = heroDao.getHero(heroId)
 }

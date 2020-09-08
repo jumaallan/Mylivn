@@ -8,5 +8,5 @@ class HeroViewModel(
     private val heroRepository: HeroRepository
 ) : ViewModel() {
 
-    fun getHero(heroId: Int): Hero = heroRepository.getHero(heroId)
+    suspend fun getHero(heroId: Int): Hero = heroRepository.getHero(heroId)
 }

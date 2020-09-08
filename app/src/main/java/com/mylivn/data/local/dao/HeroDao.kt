@@ -8,5 +8,5 @@ import com.mylivn.data.local.entities.Hero
 interface HeroDao : BaseDao<Hero> {
 
     @Query("SELECT * FROM hero WHERE heroId =:heroId")
-    fun getHero(heroId: Int): Hero
+    suspend fun getHero(heroId: Int): Hero
 }
