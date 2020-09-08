@@ -41,6 +41,9 @@ object Versions {
     // Circle Indicator
     const val circleIndicator = "2.1.4"
 
+    // COIL
+    const val coil = "0.13.0"
+
     // Gradle Plugins
     const val ktlint = "9.3.0"
     const val detekt = "1.12.0"
@@ -133,6 +136,9 @@ object Libraries {
 
     // Circle Indicator
     const val circleIndicator = "me.relex:circleindicator:${Versions.circleIndicator}"
+
+    // COIL
+    const val coil = "io.coil-kt:coil:${Versions.coil}"
 }
 
 object TestLibraries {

@@ -102,6 +102,9 @@ dependencies {
     // Circle Indicator
     implementation(Libraries.circleIndicator)
 
+    // COIL
+    implementation(Libraries.coil)
+
     // Debug - for debug builds only
     implementation(Libraries.timber)
     implementation(Libraries.leakCanary)
