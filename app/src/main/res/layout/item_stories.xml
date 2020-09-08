@@ -6,7 +6,7 @@
 
         <variable
             name="stories"
-            type="com.mylivn.data.local.entities.Stories" />
+            type="com.mylivn.data.models.HeroStories" />
     </data>
 
     <androidx.cardview.widget.CardView

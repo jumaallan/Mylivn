@@ -6,7 +6,7 @@
 
         <variable
             name="events"
-            type="com.mylivn.data.local.entities.Events" />
+            type="com.mylivn.data.models.HeroEvents" />
     </data>
 
     <androidx.cardview.widget.CardView
