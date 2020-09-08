@@ -24,7 +24,8 @@ abstract class BindingActivity<T : ViewDataBinding> : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, layoutResId)
 
         themeViewModel.getAppTheme().observe(
-            this, {
+            this,
+            {
                 it.let {
                     when (it) {
                         "Light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)

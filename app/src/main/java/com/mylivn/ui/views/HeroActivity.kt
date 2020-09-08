@@ -56,7 +56,8 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
         fetchHeroes(1)
 
         marvelViewModel.heroesResponseState.observe(
-            this, {
+            this,
+            {
                 when (val heroesResponse = it.heroes) {
                     is NetworkResult.Success -> {
                         Timber.d("Jumaaaa")
@@ -70,8 +71,6 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
                 }
             }
         )
-
-
     }
 
     private fun fetchHeroes(heroId: Int) = lifecycleScope.launch {
