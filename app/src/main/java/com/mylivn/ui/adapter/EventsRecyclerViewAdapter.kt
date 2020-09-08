@@ -38,7 +38,7 @@ class EventsRecyclerViewAdapter :
             oldItem: Events,
             newItem: Events
         ): Boolean =
-            oldItem.heroName == newItem.heroName
+            oldItem.eventName == newItem.eventName
 
         override fun areContentsTheSame(
             oldItem: Events,

@@ -38,7 +38,7 @@ class StoriesRecyclerViewAdapter :
             oldItem: Stories,
             newItem: Stories
         ): Boolean =
-            oldItem.heroName == newItem.heroName
+            oldItem.storyName == newItem.storyName
 
         override fun areContentsTheSame(
             oldItem: Stories,

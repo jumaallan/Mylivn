@@ -38,7 +38,7 @@ class SeriesRecyclerViewAdapter :
             oldItem: Series,
             newItem: Series
         ): Boolean =
-            oldItem.heroName == newItem.heroName
+            oldItem.seriesName == newItem.seriesName
 
         override fun areContentsTheSame(
             oldItem: Series,
