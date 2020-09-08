@@ -59,6 +59,7 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
     }
 
     private fun fetchHeroes(heroId: Int) = lifecycleScope.launch {
+        marvelViewModel.fetchCharacters()
         marvelViewModel.fetchMarvelHeroes()
             .collectLatest { heroRecyclerViewAdapter.submitData(it.map { hero -> hero.toModel() }) }
         comicsViewModel.getHeroComics(heroId)
