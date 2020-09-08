@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.mylivn.data.local.entities.Comics
+import com.mylivn.data.models.HeroComics
 import com.mylivn.databinding.ItemComicsBinding
 
 /**
@@ -14,7 +14,7 @@ import com.mylivn.databinding.ItemComicsBinding
  * This adapter is responsible for setting the comics list, as an horizontal view
  */
 class ComicsRecyclerViewAdapter :
-    PagingDataAdapter<Comics, ComicsRecyclerViewAdapter.ViewHolder>(
+    PagingDataAdapter<HeroComics, ComicsRecyclerViewAdapter.ViewHolder>(
         ComicsDiffer
     ) {
 
@@ -27,22 +27,22 @@ class ComicsRecyclerViewAdapter :
     class ViewHolder(private val binding: ItemComicsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(comics: Comics) {
+        fun bind(comics: HeroComics) {
             binding.comics = comics
             binding.executePendingBindings()
         }
     }
 
-    companion object ComicsDiffer : DiffUtil.ItemCallback<Comics>() {
+    companion object ComicsDiffer : DiffUtil.ItemCallback<HeroComics>() {
         override fun areItemsTheSame(
-            oldItem: Comics,
-            newItem: Comics
+            oldItem: HeroComics,
+            newItem: HeroComics
         ): Boolean =
             oldItem.comicName == newItem.comicName
 
         override fun areContentsTheSame(
-            oldItem: Comics,
-            newItem: Comics
+            oldItem: HeroComics,
+            newItem: HeroComics
         ): Boolean = oldItem == newItem
     }
 

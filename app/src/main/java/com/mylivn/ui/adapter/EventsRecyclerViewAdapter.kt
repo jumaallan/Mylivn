@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.mylivn.data.local.entities.Events
+import com.mylivn.data.models.HeroEvents
 import com.mylivn.databinding.ItemEventsBinding
 
 /**
@@ -14,7 +14,7 @@ import com.mylivn.databinding.ItemEventsBinding
  * This adapter is responsible for setting the events list, as an horizontal view
  */
 class EventsRecyclerViewAdapter :
-    PagingDataAdapter<Events, EventsRecyclerViewAdapter.ViewHolder>(
+    PagingDataAdapter<HeroEvents, EventsRecyclerViewAdapter.ViewHolder>(
         EventsDiffer
     ) {
 
@@ -27,22 +27,22 @@ class EventsRecyclerViewAdapter :
     class ViewHolder(private val binding: ItemEventsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(events: Events) {
+        fun bind(events: HeroEvents) {
             binding.events = events
             binding.executePendingBindings()
         }
     }
 
-    companion object EventsDiffer : DiffUtil.ItemCallback<Events>() {
+    companion object EventsDiffer : DiffUtil.ItemCallback<HeroEvents>() {
         override fun areItemsTheSame(
-            oldItem: Events,
-            newItem: Events
+            oldItem: HeroEvents,
+            newItem: HeroEvents
         ): Boolean =
             oldItem.eventName == newItem.eventName
 
         override fun areContentsTheSame(
-            oldItem: Events,
-            newItem: Events
+            oldItem: HeroEvents,
+            newItem: HeroEvents
         ): Boolean = oldItem == newItem
     }
 

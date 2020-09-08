@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.mylivn.core.utils.toHttps
-import com.mylivn.data.local.entities.Hero
+import com.mylivn.data.models.MarvelHero
 import com.mylivn.databinding.ItemHeroBinding
 
 /**
@@ -16,7 +16,7 @@ import com.mylivn.databinding.ItemHeroBinding
  * This adapter is responsible for setting the heroes list on the hero list at the top
  */
 class HeroRecyclerViewAdapter :
-    PagingDataAdapter<Hero, HeroRecyclerViewAdapter.ViewHolder>(
+    PagingDataAdapter<MarvelHero, HeroRecyclerViewAdapter.ViewHolder>(
         HeroesDiffer
     ) {
 
@@ -29,23 +29,23 @@ class HeroRecyclerViewAdapter :
     class ViewHolder(private val binding: ItemHeroBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(hero: Hero) {
+        fun bind(hero: MarvelHero) {
             binding.hero = hero
             binding.imageViewHeroAvatar.load(hero.heroThumbnail.toHttps())
             binding.executePendingBindings()
         }
     }
 
-    companion object HeroesDiffer : DiffUtil.ItemCallback<Hero>() {
+    companion object HeroesDiffer : DiffUtil.ItemCallback<MarvelHero>() {
         override fun areItemsTheSame(
-            oldItem: Hero,
-            newItem: Hero
+            oldItem: MarvelHero,
+            newItem: MarvelHero
         ): Boolean =
             oldItem.heroName == newItem.heroName
 
         override fun areContentsTheSame(
-            oldItem: Hero,
-            newItem: Hero
+            oldItem: MarvelHero,
+            newItem: MarvelHero
         ): Boolean = oldItem == newItem
     }
 

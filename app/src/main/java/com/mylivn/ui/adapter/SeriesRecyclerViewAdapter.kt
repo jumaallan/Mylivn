@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.mylivn.data.local.entities.Series
+import com.mylivn.data.models.HeroSeries
 import com.mylivn.databinding.ItemSeriesBinding
 
 /**
@@ -14,7 +14,7 @@ import com.mylivn.databinding.ItemSeriesBinding
  * This adapter is responsible for setting the series list, as an horizontal view
  */
 class SeriesRecyclerViewAdapter :
-    PagingDataAdapter<Series, SeriesRecyclerViewAdapter.ViewHolder>(
+    PagingDataAdapter<HeroSeries, SeriesRecyclerViewAdapter.ViewHolder>(
         SeriesDiffer
     ) {
 
@@ -27,22 +27,22 @@ class SeriesRecyclerViewAdapter :
     class ViewHolder(private val binding: ItemSeriesBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(series: Series) {
+        fun bind(series: HeroSeries) {
             binding.series = series
             binding.executePendingBindings()
         }
     }
 
-    companion object SeriesDiffer : DiffUtil.ItemCallback<Series>() {
+    companion object SeriesDiffer : DiffUtil.ItemCallback<HeroSeries>() {
         override fun areItemsTheSame(
-            oldItem: Series,
-            newItem: Series
+            oldItem: HeroSeries,
+            newItem: HeroSeries
         ): Boolean =
             oldItem.seriesName == newItem.seriesName
 
         override fun areContentsTheSame(
-            oldItem: Series,
-            newItem: Series
+            oldItem: HeroSeries,
+            newItem: HeroSeries
         ): Boolean = oldItem == newItem
     }
 

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.mylivn.data.local.entities.Stories
+import com.mylivn.data.models.HeroStories
 import com.mylivn.databinding.ItemStoriesBinding
 
 /**
@@ -14,7 +14,7 @@ import com.mylivn.databinding.ItemStoriesBinding
  * This adapter is responsible for setting the stories list, as an horizontal view
  */
 class StoriesRecyclerViewAdapter :
-    PagingDataAdapter<Stories, StoriesRecyclerViewAdapter.ViewHolder>(
+    PagingDataAdapter<HeroStories, StoriesRecyclerViewAdapter.ViewHolder>(
         StoriesDiffer
     ) {
 
@@ -27,22 +27,22 @@ class StoriesRecyclerViewAdapter :
     class ViewHolder(private val binding: ItemStoriesBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(stories: Stories) {
+        fun bind(stories: HeroStories) {
             binding.stories = stories
             binding.executePendingBindings()
         }
     }
 
-    companion object StoriesDiffer : DiffUtil.ItemCallback<Stories>() {
+    companion object StoriesDiffer : DiffUtil.ItemCallback<HeroStories>() {
         override fun areItemsTheSame(
-            oldItem: Stories,
-            newItem: Stories
+            oldItem: HeroStories,
+            newItem: HeroStories
         ): Boolean =
             oldItem.storyName == newItem.storyName
 
         override fun areContentsTheSame(
-            oldItem: Stories,
-            newItem: Stories
+            oldItem: HeroStories,
+            newItem: HeroStories
         ): Boolean = oldItem == newItem
     }
 
