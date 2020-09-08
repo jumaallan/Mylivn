@@ -39,10 +39,11 @@ private val daoModule: Module = module {
     single { get<Database>().eventsDao() }
     single { get<Database>().seriesDao() }
     single { get<Database>().storiesDao() }
+    single { get<Database>().marvelKeysDao() }
 }
 
 private val repositoryModule: Module = module {
-    single { MarvelRepository(get(), get()) }
+    single { MarvelRepository(get(), get(), get(), get(), get(), get(), get()) }
     single { HeroRepository(get()) }
     single { ComicsRepository(get()) }
     single { EventsRepository(get()) }
