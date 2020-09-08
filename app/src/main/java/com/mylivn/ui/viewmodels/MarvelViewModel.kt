@@ -16,7 +16,7 @@ class MarvelViewModel(
         get() = heroesResponse
 
     private var heroesResponse =
-        MutableLiveData<HeroResponse>(HeroResponse(null))
+        MutableLiveData(HeroResponse(null))
 
     fun getHeroes() = viewModelScope.launch {
         fetchHeroes()
