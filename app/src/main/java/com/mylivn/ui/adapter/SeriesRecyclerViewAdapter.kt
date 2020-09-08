@@ -2,8 +2,8 @@ package com.mylivn.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mylivn.data.local.entities.Series
 import com.mylivn.databinding.ItemSeriesBinding
@@ -13,8 +13,8 @@ import com.mylivn.databinding.ItemSeriesBinding
  *
  * This adapter is responsible for setting the series list, as an horizontal view
  */
-internal class SeriesRecyclerViewAdapter :
-    ListAdapter<Series, SeriesRecyclerViewAdapter.ViewHolder>(
+class SeriesRecyclerViewAdapter :
+    PagingDataAdapter<Series, SeriesRecyclerViewAdapter.ViewHolder>(
         SeriesDiffer
     ) {
 
@@ -22,10 +22,6 @@ internal class SeriesRecyclerViewAdapter :
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemSeriesBinding.inflate(inflater)
         return ViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
     }
 
     class ViewHolder(private val binding: ItemSeriesBinding) :
@@ -48,5 +44,9 @@ internal class SeriesRecyclerViewAdapter :
             oldItem: Series,
             newItem: Series
         ): Boolean = oldItem == newItem
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        getItem(position)?.let { holder.bind(it) }
     }
 }

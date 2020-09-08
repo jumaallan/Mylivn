@@ -2,8 +2,8 @@ package com.mylivn.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mylivn.data.local.entities.Stories
 import com.mylivn.databinding.ItemStoriesBinding
@@ -13,8 +13,8 @@ import com.mylivn.databinding.ItemStoriesBinding
  *
  * This adapter is responsible for setting the stories list, as an horizontal view
  */
-internal class StoriesRecyclerViewAdapter :
-    ListAdapter<Stories, StoriesRecyclerViewAdapter.ViewHolder>(
+class StoriesRecyclerViewAdapter :
+    PagingDataAdapter<Stories, StoriesRecyclerViewAdapter.ViewHolder>(
         StoriesDiffer
     ) {
 
@@ -22,10 +22,6 @@ internal class StoriesRecyclerViewAdapter :
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemStoriesBinding.inflate(inflater)
         return ViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
     }
 
     class ViewHolder(private val binding: ItemStoriesBinding) :
@@ -48,5 +44,9 @@ internal class StoriesRecyclerViewAdapter :
             oldItem: Stories,
             newItem: Stories
         ): Boolean = oldItem == newItem
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        getItem(position)?.let { holder.bind(it) }
     }
 }

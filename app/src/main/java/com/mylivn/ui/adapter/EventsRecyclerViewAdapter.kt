@@ -2,8 +2,8 @@ package com.mylivn.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mylivn.data.local.entities.Events
 import com.mylivn.databinding.ItemEventsBinding
@@ -13,8 +13,8 @@ import com.mylivn.databinding.ItemEventsBinding
  *
  * This adapter is responsible for setting the events list, as an horizontal view
  */
-internal class EventsRecyclerViewAdapter :
-    ListAdapter<Events, EventsRecyclerViewAdapter.ViewHolder>(
+class EventsRecyclerViewAdapter :
+    PagingDataAdapter<Events, EventsRecyclerViewAdapter.ViewHolder>(
         EventsDiffer
     ) {
 
@@ -22,10 +22,6 @@ internal class EventsRecyclerViewAdapter :
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemEventsBinding.inflate(inflater)
         return ViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
     }
 
     class ViewHolder(private val binding: ItemEventsBinding) :
@@ -48,5 +44,9 @@ internal class EventsRecyclerViewAdapter :
             oldItem: Events,
             newItem: Events
         ): Boolean = oldItem == newItem
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        getItem(position)?.let { holder.bind(it) }
     }
 }

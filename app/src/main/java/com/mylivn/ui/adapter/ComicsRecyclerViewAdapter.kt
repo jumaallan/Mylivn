@@ -2,8 +2,8 @@ package com.mylivn.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mylivn.data.local.entities.Comics
 import com.mylivn.databinding.ItemComicsBinding
@@ -13,8 +13,8 @@ import com.mylivn.databinding.ItemComicsBinding
  *
  * This adapter is responsible for setting the comics list, as an horizontal view
  */
-internal class ComicsRecyclerViewAdapter :
-    ListAdapter<Comics, ComicsRecyclerViewAdapter.ViewHolder>(
+class ComicsRecyclerViewAdapter :
+    PagingDataAdapter<Comics, ComicsRecyclerViewAdapter.ViewHolder>(
         ComicsDiffer
     ) {
 
@@ -22,10 +22,6 @@ internal class ComicsRecyclerViewAdapter :
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemComicsBinding.inflate(inflater)
         return ViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
     }
 
     class ViewHolder(private val binding: ItemComicsBinding) :
@@ -48,5 +44,9 @@ internal class ComicsRecyclerViewAdapter :
             oldItem: Comics,
             newItem: Comics
         ): Boolean = oldItem == newItem
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        getItem(position)?.let { holder.bind(it) }
     }
 }

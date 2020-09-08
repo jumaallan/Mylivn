@@ -2,8 +2,8 @@ package com.mylivn.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mylivn.data.local.entities.Hero
 import com.mylivn.databinding.ItemHeroBinding
@@ -13,8 +13,8 @@ import com.mylivn.databinding.ItemHeroBinding
  *
  * This adapter is responsible for setting the heroes list on the hero list at the top
  */
-internal class HeroRecyclerViewAdapter :
-    ListAdapter<Hero, HeroRecyclerViewAdapter.ViewHolder>(
+class HeroRecyclerViewAdapter :
+    PagingDataAdapter<Hero, HeroRecyclerViewAdapter.ViewHolder>(
         HeroesDiffer
     ) {
 
@@ -22,10 +22,6 @@ internal class HeroRecyclerViewAdapter :
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemHeroBinding.inflate(inflater)
         return ViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
     }
 
     class ViewHolder(private val binding: ItemHeroBinding) :
@@ -48,5 +44,9 @@ internal class HeroRecyclerViewAdapter :
             oldItem: Hero,
             newItem: Hero
         ): Boolean = oldItem == newItem
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        getItem(position)?.let { holder.bind(it) }
     }
 }
