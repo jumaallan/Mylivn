@@ -3,7 +3,7 @@ package com.mylivn.core.di
 import android.content.Context
 import com.google.gson.GsonBuilder
 import com.mylivn.core.BuildConfig
-import com.mylivn.core.data.api.HeroAPI
+import com.mylivn.core.data.api.MarvelAPI
 import com.mylivn.core.network.AuthInterceptor
 import com.mylivn.core.settings.Settings
 import com.mylivn.core.utils.Constants
@@ -59,7 +59,7 @@ private val networkingModule: Module = module {
 }
 
 val apiModule: Module = module {
-    single<HeroAPI> { get<Retrofit>().create() }
+    single<MarvelAPI> { get<Retrofit>().create() }
 }
 
 val settingsModule: Module = module {

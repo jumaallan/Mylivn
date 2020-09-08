@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.google.gson.GsonBuilder
-import com.mylivn.core.data.api.HeroAPI
+import com.mylivn.core.data.api.MarvelAPI
 import com.mylivn.data.local.Database
 import com.mylivn.data.local.dao.*
 import com.mylivn.dispatcher.MockRequestDispatcher
@@ -24,7 +24,7 @@ internal open class BaseTest {
     private lateinit var mockWebServer: MockWebServer
     private lateinit var okHttpClient: OkHttpClient
     private lateinit var loggingInterceptor: HttpLoggingInterceptor
-    lateinit var heroAPI: HeroAPI
+    lateinit var marvelAPI: MarvelAPI
 
     // database and dao
     private lateinit var database: Database
@@ -48,12 +48,12 @@ internal open class BaseTest {
             .serializeNulls()
             .create()
 
-        heroAPI = Retrofit.Builder()
+        marvelAPI = Retrofit.Builder()
             .baseUrl(mockWebServer.url("/"))
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
-            .create(HeroAPI::class.java)
+            .create(MarvelAPI::class.java)
 
         val context = ApplicationProvider.getApplicationContext<Context>()
         database =

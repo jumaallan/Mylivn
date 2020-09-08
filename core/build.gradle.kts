@@ -60,6 +60,9 @@ dependencies {
     implementation(Libraries.koin)
     implementation(Libraries.koinViewModel)
 
+    // Paging
+    implementation(Libraries.paging)
+
     // debug
     implementation(Libraries.timber)
 

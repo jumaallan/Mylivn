@@ -17,7 +17,7 @@ internal class MarvelRepositoryTest : BaseTest() {
     @Before
     fun setUp() {
         super.setup()
-        marvelRepository = MarvelRepository(heroAPI, heroDao)
+        marvelRepository = MarvelRepository(marvelAPI, heroDao)
     }
 
     @Test

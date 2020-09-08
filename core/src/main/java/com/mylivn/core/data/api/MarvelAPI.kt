@@ -4,7 +4,7 @@ import com.mylivn.core.data.models.HeroesResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface HeroAPI {
+interface MarvelAPI {
 
     @GET("v1/public/characters")
     suspend fun fetchHeroes(
