@@ -11,11 +11,13 @@ import com.mylivn.data.local.entities.*
         Comics::class,
         Events::class,
         Series::class,
-        Stories::class
+        Stories::class,
+        MarvelKeys::class
     ],
     version = 1,
     exportSchema = false
 )
+
 @TypeConverters(DateConverter::class)
 abstract class Database : RoomDatabase() {
 
@@ -24,4 +26,5 @@ abstract class Database : RoomDatabase() {
     abstract fun eventsDao(): EventsDao
     abstract fun seriesDao(): SeriesDao
     abstract fun storiesDao(): StoriesDao
+    abstract fun marvelKeysDao(): MarvelKeysDao
 }
