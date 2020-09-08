@@ -74,21 +74,15 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
 
     }
 
-    private fun fetchHeroes(heroId: Int) {
-        lifecycleScope.launch {
-            comicsViewModel.getHeroComics(heroId).collectLatest {
-                comicsRecyclerViewAdapter.submitData(it)
-            }
-            seriesViewModel.getHeroSeries(heroId).collectLatest {
-                seriesRecyclerViewAdapter.submitData(it)
-            }
-            storiesViewModel.getHeroStories(heroId).collectLatest {
-                storiesRecyclerViewAdapter.submitData(it)
-            }
-            eventsViewModel.getHeroEvents(heroId).collectLatest {
-                eventsRecyclerViewAdapter.submitData(it)
-            }
-        }
+    private fun fetchHeroes(heroId: Int) = lifecycleScope.launch {
+        comicsViewModel.getHeroComics(heroId)
+            .collectLatest { comicsRecyclerViewAdapter.submitData(it) }
+        seriesViewModel.getHeroSeries(heroId)
+            .collectLatest { seriesRecyclerViewAdapter.submitData(it) }
+        storiesViewModel.getHeroStories(heroId)
+            .collectLatest { storiesRecyclerViewAdapter.submitData(it) }
+        eventsViewModel.getHeroEvents(heroId)
+            .collectLatest { eventsRecyclerViewAdapter.submitData(it) }
     }
 
     override val layoutResId: Int
