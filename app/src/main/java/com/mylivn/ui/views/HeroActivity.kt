@@ -55,7 +55,7 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
             adapter = eventsRecyclerViewAdapter
         }
 
-        fetchHeroes(1)
+        fetchHeroes(1011334)
     }
 
     private fun fetchHeroes(heroId: Int) = lifecycleScope.launch {

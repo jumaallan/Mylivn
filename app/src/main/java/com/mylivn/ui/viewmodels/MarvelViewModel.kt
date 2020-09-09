@@ -14,12 +14,10 @@ class MarvelViewModel(
 ) : ViewModel() {
 
     fun fetchMarvelHeroes(): Flow<PagingData<Hero>> =
-        marvelRepository.getMarvelHeroes()
+        marvelRepository.getMarvelHeroes().cachedIn(viewModelScope)
 
-
-    fun fetchCharacters(){
-        viewModelScope.launch {
-            marvelRepository.fetchMarvelHeroes()
-        }
+    fun fetchCharacters() = viewModelScope.launch {
+        marvelRepository.fetchMarvelHeroes()
     }
+
 }
