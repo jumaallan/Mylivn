@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.mylivn.data.models.HeroEvents
 import com.mylivn.databinding.ItemEventsBinding
 
@@ -30,6 +31,7 @@ class EventsRecyclerViewAdapter :
         fun bind(events: HeroEvents) {
             binding.events = events
             binding.executePendingBindings()
+            binding.imageViewEventUrl.load(events.resourceURI)
         }
     }
 

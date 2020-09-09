@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.mylivn.data.models.HeroStories
 import com.mylivn.databinding.ItemStoriesBinding
 
@@ -30,6 +31,7 @@ class StoriesRecyclerViewAdapter :
         fun bind(stories: HeroStories) {
             binding.stories = stories
             binding.executePendingBindings()
+            binding.imgStories.load(stories.resourceURI)
         }
     }
 
