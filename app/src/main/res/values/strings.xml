@@ -4,4 +4,5 @@
     <string name="text_hero_events_label">Events</string>
     <string name="text_hero_comics_label">Comics</string>
     <string name="text_hero_details_label">Hero Details</string>
+    <string name="text_hero_series_label">Series</string>
 </resources>

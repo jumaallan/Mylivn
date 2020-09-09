@@ -110,7 +110,7 @@
             android:id="@+id/tvSeriesLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/text_hero_comics_label"
+            android:text="@string/text_hero_series_label"
             android:padding="@dimen/padding_normal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cardViewHeroDetails"/>
