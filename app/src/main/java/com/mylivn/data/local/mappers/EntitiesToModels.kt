@@ -7,7 +7,8 @@ fun Hero.toModel(): MarvelHero =
     MarvelHero(
         heroName = this.heroName,
         heroDescription = this.heroDescription,
-        heroThumbnail = this.heroThumbnail
+        heroThumbnail = this.heroThumbnail,
+        heroId = this.heroId
     )
 
 fun Comics.toModel(): HeroComics =

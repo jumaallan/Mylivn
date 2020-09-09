@@ -15,7 +15,9 @@ import com.mylivn.databinding.ItemHeroBinding
  *
  * This adapter is responsible for setting the heroes list on the hero list at the top
  */
-class HeroRecyclerViewAdapter :
+typealias ClickListener = (MarvelHero) -> Unit
+
+class HeroRecyclerViewAdapter(private val clickListener: ClickListener) :
     PagingDataAdapter<MarvelHero, HeroRecyclerViewAdapter.ViewHolder>(
         HeroesDiffer
     ) {
@@ -23,16 +25,22 @@ class HeroRecyclerViewAdapter :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemHeroBinding.inflate(inflater)
-        return ViewHolder(binding)
+        return ViewHolder(binding, clickListener)
     }
 
-    class ViewHolder(private val binding: ItemHeroBinding) :
+    class ViewHolder(
+        private val binding: ItemHeroBinding,
+        private val clickListener: ClickListener
+    ) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(hero: MarvelHero) {
             binding.hero = hero
             binding.imageViewHeroAvatar.load(hero.heroThumbnail.toHttps())
             binding.executePendingBindings()
+            binding.root.setOnClickListener {
+                clickListener(hero)
+            }
         }
     }
 

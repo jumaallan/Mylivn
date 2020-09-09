@@ -26,7 +26,7 @@ class MarvelRepository(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
 
-    suspend fun fetchMarvelHeroes(){
+    suspend fun fetchMarvelHeroes() {
         val marvelResponse = safeApiCall(ioDispatcher) {
             return@safeApiCall marvelAPI.fetchHeroes(
                 "a5df6fc2b951d20f5aaef40803ab166c",
@@ -104,7 +104,7 @@ class MarvelRepository(
         }
     }
 
-     fun getMarvelHeroes() : Flow<PagingData<Hero>> =
+    fun getMarvelHeroes(): Flow<PagingData<Hero>> =
         Pager(
             PagingConfig(pageSize = 40, enablePlaceholders = false, prefetchDistance = 3),
             pagingSourceFactory = { heroDao.getHeroes() }

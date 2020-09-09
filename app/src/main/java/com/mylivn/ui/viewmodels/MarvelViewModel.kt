@@ -17,7 +17,7 @@ class MarvelViewModel(
         marvelRepository.getMarvelHeroes()
 
 
-    fun fetchCharacters(){
+    fun fetchCharacters() {
         viewModelScope.launch {
             marvelRepository.fetchMarvelHeroes()
         }

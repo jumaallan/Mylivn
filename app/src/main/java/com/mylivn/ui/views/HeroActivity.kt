@@ -4,7 +4,10 @@ import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.map
 import com.mylivn.R
+import com.mylivn.core.utils.toast
+import com.mylivn.data.local.entities.Hero
 import com.mylivn.data.local.mappers.toModel
+import com.mylivn.data.models.MarvelHero
 import com.mylivn.databinding.ActivityHeroBinding
 import com.mylivn.ui.adapter.*
 import com.mylivn.ui.viewmodels.*
@@ -26,14 +29,20 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
     private val seriesViewModel: SeriesViewModel by viewModel()
     private val storiesViewModel: StoriesViewModel by viewModel()
 
-    private val heroRecyclerViewAdapter = HeroRecyclerViewAdapter()
+
     private val comicsRecyclerViewAdapter = ComicsRecyclerViewAdapter()
     private val eventsRecyclerViewAdapter = EventsRecyclerViewAdapter()
     private val seriesRecyclerViewAdapter = SeriesRecyclerViewAdapter()
     private val storiesRecyclerViewAdapter = StoriesRecyclerViewAdapter()
+    private lateinit var heroRecyclerViewAdapter: HeroRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        fetchHeroes()
+        heroRecyclerViewAdapter = HeroRecyclerViewAdapter {
+            toast(it.heroName)
+            fetchHeroDetails(it.heroId)
+        }
 
         recyclerViewHero.apply {
             adapter = heroRecyclerViewAdapter
@@ -54,14 +63,15 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
         recyclerViewHeroEvents.apply {
             adapter = eventsRecyclerViewAdapter
         }
-
-        fetchHeroes(1)
     }
 
-    private fun fetchHeroes(heroId: Int) = lifecycleScope.launch {
+    private fun fetchHeroes() = lifecycleScope.launchWhenStarted {
         marvelViewModel.fetchCharacters()
         marvelViewModel.fetchMarvelHeroes()
-            .collectLatest { heroRecyclerViewAdapter.submitData(it.map { hero -> hero.toModel() }) }
+            .collectLatest { heroRecyclerViewAdapter.submitData(it.map { hero: Hero -> hero.toModel() }) }
+    }
+
+    private fun fetchHeroDetails(heroId: Int) = lifecycleScope.launchWhenStarted {
         comicsViewModel.getHeroComics(heroId)
             .collectLatest { comicsRecyclerViewAdapter.submitData(it.map { comics -> comics.toModel() }) }
         seriesViewModel.getHeroSeries(heroId)
