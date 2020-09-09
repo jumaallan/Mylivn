@@ -1,3 +1,7 @@
 <resources>
   <string name="app_name">Mylivn</string>
+    <string name="text_hero_stories_label">Stories</string>
+    <string name="text_hero_events_label">Events</string>
+    <string name="text_hero_comics_label">Comics</string>
+    <string name="text_hero_details_label">Hero Details</string>
 </resources>
