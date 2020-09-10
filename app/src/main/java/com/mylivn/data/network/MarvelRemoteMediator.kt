@@ -18,7 +18,6 @@ import java.io.IOException
 @ExperimentalPagingApi
 class MarvelRemoteMediator(
     private val marvelAPI: MarvelAPI,
-    private val marvelKeysDao: MarvelKeysDao,
     private val heroDao: HeroDao,
     private val comicsDao: ComicsDao,
     private val eventsDao: EventsDao,
@@ -31,7 +30,6 @@ class MarvelRemoteMediator(
         state: PagingState<Int, Hero>
     ): MediatorResult {
         return try {
-            val remoteKey = getMarvelKeys()
             var pageLimit = 0
             val marvelResponse = safeApiCall(ioDispatcher) {
                 return@safeApiCall marvelAPI.fetchHeroes(
@@ -116,7 +114,4 @@ class MarvelRemoteMediator(
             MediatorResult.Error(exception)
         }
     }
-
-    private suspend fun getMarvelKeys(): MarvelKeys? =
-        marvelKeysDao.getMarvelKeys().firstOrNull()
 }
