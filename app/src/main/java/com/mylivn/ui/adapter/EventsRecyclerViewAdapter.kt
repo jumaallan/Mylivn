@@ -30,8 +30,8 @@ class EventsRecyclerViewAdapter :
 
         fun bind(events: HeroEvents) {
             binding.events = events
-            binding.executePendingBindings()
             binding.imageViewEventUrl.load(events.resourceURI)
+            binding.executePendingBindings()
         }
     }
 

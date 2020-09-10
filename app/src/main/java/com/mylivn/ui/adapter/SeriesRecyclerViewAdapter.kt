@@ -30,8 +30,9 @@ class SeriesRecyclerViewAdapter :
 
         fun bind(series: HeroSeries) {
             binding.series = series
-            binding.executePendingBindings()
             binding.imgSeries.load(series.resourceURI)
+            binding.executePendingBindings()
+
         }
     }
 

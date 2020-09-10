@@ -30,8 +30,8 @@ class StoriesRecyclerViewAdapter :
 
         fun bind(stories: HeroStories) {
             binding.stories = stories
-            binding.executePendingBindings()
             binding.imgStories.load(stories.resourceURI)
+            binding.executePendingBindings()
         }
     }
 

@@ -56,7 +56,7 @@ class MarvelRemoteMediator(
                             )
                         )
                         // save the comics
-                        hero.comics?.itemComics?.forEach { comics ->
+                        hero.comics?.items?.forEach { comics ->
                             comicsDao.insert(
                                 Comics(
                                     0,

@@ -30,9 +30,8 @@ class ComicsRecyclerViewAdapter :
 
         fun bind(comics: HeroComics) {
             binding.comics = comics
-            binding.executePendingBindings()
             binding.imageViewComicCover.load(comics.resourceURI)
-
+            binding.executePendingBindings()
         }
     }
 

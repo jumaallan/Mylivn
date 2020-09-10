@@ -1,6 +1,5 @@
 package com.mylivn.repository
 
-import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -10,8 +9,6 @@ import com.mylivn.core.network.NetworkResult
 import com.mylivn.core.network.safeApiCall
 import com.mylivn.data.local.dao.*
 import com.mylivn.data.local.entities.*
-import com.mylivn.data.models.HeroResponse
-import com.mylivn.data.network.MarvelRemoteMediator
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -51,7 +48,7 @@ class MarvelRepository(
                         )
                     )
                     // save the comics
-                    hero.comics?.itemComics?.forEach { comics ->
+                    hero.comics?.items?.forEach { comics ->
                         comicsDao.insert(
                             Comics(
                                 0,
@@ -112,5 +109,9 @@ class MarvelRepository(
             PagingConfig(pageSize = 40, enablePlaceholders = false, prefetchDistance = 3),
             pagingSourceFactory = { heroDao.getHeroes() }
         ).flow
+
+    suspend fun areItemsPresent(): Boolean {
+        return heroDao.fetchAllHeroes().isNotEmpty()
+    }
 
 }
