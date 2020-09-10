@@ -25,4 +25,8 @@ class MarvelViewModel(
             marvelResponse.postValue(marvelRepository.fetchMarvelHeroes())
         }
     }
+
+    suspend fun areItemsPresent(): Boolean {
+        return marvelRepository.areItemsPresent()
+    }
 }

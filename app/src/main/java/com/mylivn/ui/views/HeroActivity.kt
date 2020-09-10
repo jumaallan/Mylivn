@@ -85,12 +85,22 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
     }
 
     private fun fetchHeroes() {
-        binding.lottieLoadingAnimation.visibility = View.VISIBLE
-        binding.mainView.visibility = View.GONE
-        marvelViewModel.fetchCharacters()
-        marvelViewModel.fetchMarvelHeroes().observe(this@HeroActivity) {
-            lifecycleScope.launch {
-                heroRecyclerViewAdapter.submitData(it.map { hero: Hero -> hero.toModel() })
+        lifecycleScope.launch {
+            if (marvelViewModel.areItemsPresent()) {
+                marvelViewModel.fetchMarvelHeroes().observe(this@HeroActivity) {
+                    lifecycleScope.launch {
+                        heroRecyclerViewAdapter.submitData(it.map { hero: Hero -> hero.toModel() })
+                    }
+                }
+            } else {
+                binding.lottieLoadingAnimation.visibility = View.VISIBLE
+                binding.mainView.visibility = View.GONE
+                marvelViewModel.fetchCharacters()
+                marvelViewModel.fetchMarvelHeroes().observe(this@HeroActivity) {
+                    lifecycleScope.launch {
+                        heroRecyclerViewAdapter.submitData(it.map { hero: Hero -> hero.toModel() })
+                    }
+                }
             }
         }
     }

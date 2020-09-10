@@ -110,4 +110,8 @@ class MarvelRepository(
             pagingSourceFactory = { heroDao.getHeroes() }
         ).flow
 
+    suspend fun areItemsPresent(): Boolean {
+        return heroDao.fetchAllHeroes().isNotEmpty()
+    }
+
 }
