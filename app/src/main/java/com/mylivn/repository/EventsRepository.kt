@@ -13,7 +13,7 @@ class EventsRepository(
 
     fun getHeroEvents(heroId: Int): Flow<PagingData<Events>> =
         Pager(
-            PagingConfig(pageSize = 40, enablePlaceholders = false, prefetchDistance = 3),
+            PagingConfig(pageSize = 2, enablePlaceholders = false, prefetchDistance = 3),
             pagingSourceFactory = { eventsDao.getHeroEvents(heroId) }
         ).flow
 }

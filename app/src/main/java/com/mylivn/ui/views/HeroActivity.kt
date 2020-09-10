@@ -1,10 +1,15 @@
 package com.mylivn.ui.views
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.map
 import com.mylivn.R
+import com.mylivn.core.network.NetworkResult
+import com.mylivn.core.utils.toast
+import com.mylivn.data.local.entities.Hero
 import com.mylivn.data.local.mappers.toModel
+import com.mylivn.data.models.MarvelHero
 import com.mylivn.databinding.ActivityHeroBinding
 import com.mylivn.ui.adapter.*
 import com.mylivn.ui.viewmodels.*
@@ -26,14 +31,22 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
     private val seriesViewModel: SeriesViewModel by viewModel()
     private val storiesViewModel: StoriesViewModel by viewModel()
 
-    private val heroRecyclerViewAdapter = HeroRecyclerViewAdapter()
+
     private val comicsRecyclerViewAdapter = ComicsRecyclerViewAdapter()
     private val eventsRecyclerViewAdapter = EventsRecyclerViewAdapter()
     private val seriesRecyclerViewAdapter = SeriesRecyclerViewAdapter()
     private val storiesRecyclerViewAdapter = StoriesRecyclerViewAdapter()
+    private lateinit var heroRecyclerViewAdapter: HeroRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        fetchHeroes()
+        heroRecyclerViewAdapter = HeroRecyclerViewAdapter {
+            toast(it.heroName)
+            fetchHeroDetails(it.heroId)
+
+        }
+
 
         recyclerViewHero.apply {
             adapter = heroRecyclerViewAdapter
@@ -55,21 +68,60 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
             adapter = eventsRecyclerViewAdapter
         }
 
-        fetchHeroes(1011334)
+        marvelViewModel.marvelResponse.observe(this) { heroesResponse ->
+            when (heroesResponse) {
+                is NetworkResult.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.mainView.visibility = View.VISIBLE
+                }
+                is NetworkResult.NetworkError -> {
+                    binding.progressBar.visibility = View.GONE
+                }
+                is NetworkResult.ServerError -> {
+                    binding.progressBar.visibility = View.GONE
+                }
+            }
+        }
     }
 
-    private fun fetchHeroes(heroId: Int) = lifecycleScope.launch {
+    private fun fetchHeroes() {
+        binding.progressBar.visibility = View.VISIBLE
+        binding.mainView.visibility = View.GONE
         marvelViewModel.fetchCharacters()
-        marvelViewModel.fetchMarvelHeroes()
-            .collectLatest { heroRecyclerViewAdapter.submitData(it.map { hero -> hero.toModel() }) }
+        marvelViewModel.fetchMarvelHeroes().observe(this@HeroActivity) {
+            lifecycleScope.launch {
+                heroRecyclerViewAdapter.submitData(it.map { hero: Hero -> hero.toModel() })
+            }
+        }
+    }
+
+    private fun fetchHeroDetails(heroId: Int) {
         comicsViewModel.getHeroComics(heroId)
-            .collectLatest { comicsRecyclerViewAdapter.submitData(it.map { comics -> comics.toModel() }) }
+            .observe(this@HeroActivity) {
+                lifecycleScope.launch {
+                    comicsRecyclerViewAdapter.submitData(it.map { comics -> comics.toModel() })
+                }
+            }
+
         seriesViewModel.getHeroSeries(heroId)
-            .collectLatest { seriesRecyclerViewAdapter.submitData(it.map { series -> series.toModel() }) }
+            .observe(this@HeroActivity) {
+                lifecycleScope.launch {
+                    seriesRecyclerViewAdapter.submitData(it.map { series -> series.toModel() })
+                }
+            }
+
         storiesViewModel.getHeroStories(heroId)
-            .collectLatest { storiesRecyclerViewAdapter.submitData(it.map { stories -> stories.toModel() }) }
+            .observe(this@HeroActivity) {
+                lifecycleScope.launch {
+                    storiesRecyclerViewAdapter.submitData(it.map { stories -> stories.toModel() })
+                }
+            }
         eventsViewModel.getHeroEvents(heroId)
-            .collectLatest { eventsRecyclerViewAdapter.submitData(it.map { events -> events.toModel() }) }
+            .observe(this@HeroActivity) {
+                lifecycleScope.launch {
+                    eventsRecyclerViewAdapter.submitData(it.map { events -> events.toModel() })
+                }
+            }
     }
 
     override val layoutResId: Int
