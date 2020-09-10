@@ -19,8 +19,7 @@ internal class StoriesRepositoryTest : BaseTest() {
     }
 
     @Test
-    fun `test to fetch list of stories for a hero`() {
-        runBlocking {
-        }
+    fun `test to fetch list of stories for a hero`() = runBlocking {
+
     }
 }

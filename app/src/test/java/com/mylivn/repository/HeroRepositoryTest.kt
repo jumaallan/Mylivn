@@ -19,8 +19,6 @@ internal class HeroRepositoryTest : BaseTest() {
     }
 
     @Test
-    fun `test to fetch a list of heroes`() {
-        runBlocking {
-        }
+    fun `test to fetch a list of heroes`() = runBlocking {
     }
 }
