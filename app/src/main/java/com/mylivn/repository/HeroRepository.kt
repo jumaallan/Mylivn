@@ -1,5 +1,6 @@
 package com.mylivn.repository
 
+import androidx.lifecycle.LiveData
 import com.mylivn.data.local.dao.HeroDao
 import com.mylivn.data.local.entities.Hero
 
@@ -7,5 +8,5 @@ class HeroRepository(
     private val heroDao: HeroDao,
 ) {
 
-    suspend fun getHero(heroId: Int): Hero = heroDao.getHero(heroId)
+    fun getHero(heroId: Int): LiveData<Hero> = heroDao.getHero(heroId)
 }

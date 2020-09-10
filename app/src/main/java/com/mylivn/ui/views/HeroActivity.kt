@@ -101,6 +101,12 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
     }
 
     private fun fetchHeroDetails(heroId: Int) {
+
+        heroViewModel.getHero(heroId)
+            .observe(this@HeroActivity) {
+                binding.hero = it.toModel()
+            }
+
         comicsViewModel.getHeroComics(heroId)
             .observe(this@HeroActivity) {
                 lifecycleScope.launch {

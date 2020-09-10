@@ -1,5 +1,6 @@
 package com.mylivn.data.local.dao
 
+import androidx.lifecycle.LiveData
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Query
@@ -9,7 +10,7 @@ import com.mylivn.data.local.entities.Hero
 interface HeroDao : BaseDao<Hero> {
 
     @Query("SELECT * FROM hero WHERE heroId =:heroId")
-    suspend fun getHero(heroId: Int): Hero
+    fun getHero(heroId: Int): LiveData<Hero>
 
     @Query("SELECT * FROM hero")
     fun getHeroes(): PagingSource<Int, Hero>

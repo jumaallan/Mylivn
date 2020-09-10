@@ -46,7 +46,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewHeroDetails"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="wrap_content"
                 app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="4dp"
                 app:cardUseCompatPadding="true"
@@ -60,51 +60,23 @@
                     android:padding="@dimen/padding_medium">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/textViewCharacterBirthYear"
-                        android:layout_width="0dp"
+                        android:id="@+id/textViewHeroName"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:text="@{hero.heroName}"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/textViewBirthYear"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="869BBY"
+                        android:text="@{hero.heroDescription}"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/textViewCharacterBirthYear" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/textViewHeightCm"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_small"
-                        android:layout_marginTop="@dimen/margin_small"
-                        android:layout_marginEnd="@dimen/spacing_large"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/textViewCharacterHeight"
-                        tools:text="100 CM" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/textViewCharacterHeight"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_small"
-                        android:layout_marginTop="4dp"
-                        android:layout_weight=".25"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/textViewBirthYear"
-                        tools:text="12.546 Inches" />
+                        app:layout_constraintTop_toBottomOf="@id/textViewHeroName" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
