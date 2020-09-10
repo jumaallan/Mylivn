@@ -105,6 +105,9 @@ dependencies {
     // COIL
     implementation(Libraries.coil)
 
+    // Lottie
+    implementation(Libraries.lottie)
+
     // Debug - for debug builds only
     implementation(Libraries.timber)
     implementation(Libraries.leakCanary)

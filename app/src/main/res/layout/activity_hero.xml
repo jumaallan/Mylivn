@@ -16,7 +16,7 @@
        android:fillViewport="true">
        <androidx.constraintlayout.widget.ConstraintLayout
            android:layout_width="match_parent"
-           android:layout_height="match_parent"
+           android:layout_height="wrap_content"
            android:padding="@dimen/padding_small"
            tools:context=".ui.views.HeroActivity">
 
@@ -200,12 +200,15 @@
                tools:itemCount="4"
                tools:listitem="@layout/item_stories" />
 
-           <ProgressBar
-               android:id="@+id/progressBar"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:indeterminate="true"
+           <com.airbnb.lottie.LottieAnimationView
+               android:id="@+id/lottieLoadingAnimation"
+               android:layout_width="200dp"
+               android:layout_height="200dp"
+               app:lottie_autoPlay="true"
                android:visibility="gone"
+               app:lottie_fileName="loading_spinning_circle.json"
+               app:lottie_loop="true"
+               app:lottie_speed="1"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintTop_toTopOf="parent"

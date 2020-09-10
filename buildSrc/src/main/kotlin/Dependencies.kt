@@ -44,6 +44,9 @@ object Versions {
     // COIL
     const val coil = "0.13.0"
 
+    // Lottie
+    const val lottie = "3.4.0"
+
     // Gradle Plugins
     const val ktlint = "9.3.0"
     const val detekt = "1.12.0"
@@ -139,6 +142,9 @@ object Libraries {
 
     // COIL
     const val coil = "io.coil-kt:coil:${Versions.coil}"
+
+    // Lottie
+    const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
 }
 
 object TestLibraries {
