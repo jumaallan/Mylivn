@@ -31,7 +31,7 @@ class ComicsRecyclerViewAdapter :
 
         fun bind(comics: HeroComics) {
             binding.comics = comics
-            binding.imageViewComicCover.load(R.mipmap.ic_launcher)
+            binding.imageViewComicCover.load(R.drawable.ic_mylivn_placeholder)
             binding.executePendingBindings()
         }
     }

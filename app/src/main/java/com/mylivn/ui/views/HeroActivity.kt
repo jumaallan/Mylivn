@@ -6,7 +6,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.map
 import com.mylivn.R
 import com.mylivn.core.network.NetworkResult
-import com.mylivn.core.utils.toast
 import com.mylivn.data.local.entities.Hero
 import com.mylivn.data.local.mappers.toModel
 import com.mylivn.databinding.ActivityHeroBinding
@@ -37,9 +36,10 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         fetchHeroes()
+
         heroRecyclerViewAdapter = HeroRecyclerViewAdapter {
-            toast(it.heroName)
             fetchHeroDetails(it.heroId)
         }
 
