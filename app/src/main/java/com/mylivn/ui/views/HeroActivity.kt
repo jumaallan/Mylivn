@@ -102,8 +102,12 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
                     emptyViewComics.show()
                     tvComicsLabel.hide()
                     recyclerViewHeroComics.hide()
+                } else {
+                    emptyViewComics.hide()
+                    tvComicsLabel.show()
+                    recyclerViewHeroComics.show()
+                    comicsRecyclerViewAdapter.submitList(it.map { comics -> comics.toModel() })
                 }
-                comicsRecyclerViewAdapter.submitList(it.map { comics -> comics.toModel() })
             }
 
         seriesViewModel.getHeroSeries(heroId)
@@ -112,8 +116,12 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
                     emptyViewSeries.show()
                     tvSeriesLabel.hide()
                     recyclerViewHeroSeries.hide()
+                } else {
+                    emptyViewSeries.hide()
+                    tvSeriesLabel.show()
+                    recyclerViewHeroSeries.show()
+                    seriesRecyclerViewAdapter.submitList(it.map { series -> series.toModel() })
                 }
-                seriesRecyclerViewAdapter.submitList(it.map { series -> series.toModel() })
             }
 
         storiesViewModel.getHeroStories(heroId)
@@ -122,8 +130,12 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
                     emptyViewStories.show()
                     tvStoriesLabel.hide()
                     recyclerViewHeroStories.hide()
+                } else {
+                    emptyViewStories.hide()
+                    tvStoriesLabel.show()
+                    recyclerViewHeroStories.show()
+                    storiesRecyclerViewAdapter.submitList(it.map { stories -> stories.toModel() })
                 }
-                storiesRecyclerViewAdapter.submitList(it.map { stories -> stories.toModel() })
             }
         eventsViewModel.getHeroEvents(heroId)
             .observe(this@HeroActivity) {
@@ -131,8 +143,12 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
                     emptyViewEvents.show()
                     tvEventsLabel.hide()
                     recyclerViewHeroEvents.hide()
+                } else {
+                    emptyViewEvents.hide()
+                    tvEventsLabel.show()
+                    recyclerViewHeroEvents.show()
+                    eventsRecyclerViewAdapter.submitList(it.map { events -> events.toModel() })
                 }
-                eventsRecyclerViewAdapter.submitList(it.map { events -> events.toModel() })
             }
     }
 

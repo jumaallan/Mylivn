@@ -30,7 +30,7 @@ class StoriesRecyclerViewAdapter :
 
         fun bind(stories: HeroStories) {
             binding.stories = stories
-            binding.imageViewStoriesUrl.load(stories.resourceURI)
+            binding.imageViewStoriesUrl.load("https://www.eu-startups.com/wp-content/uploads/2019/12/mylivn_globe_1024-500x500.png")
             binding.executePendingBindings()
         }
     }

@@ -30,7 +30,7 @@ class SeriesRecyclerViewAdapter :
 
         fun bind(series: HeroSeries) {
             binding.series = series
-            binding.imageViewSeriesUrl.load(series.resourceURI)
+            binding.imageViewSeriesUrl.load("https://www.eu-startups.com/wp-content/uploads/2019/12/mylivn_globe_1024-500x500.png")
             binding.executePendingBindings()
         }
     }
