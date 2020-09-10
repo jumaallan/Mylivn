@@ -26,6 +26,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="test"
+            android:textSize="18sp"
+            android:padding="@dimen/padding_small"
+            />
+
     </androidx.cardview.widget.CardView>
 
 </layout>
