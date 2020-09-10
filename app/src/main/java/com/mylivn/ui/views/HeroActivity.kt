@@ -2,17 +2,13 @@ package com.mylivn.ui.views
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.lifecycleScope
-import androidx.paging.map
 import com.mylivn.R
 import com.mylivn.core.network.NetworkResult
-import com.mylivn.data.local.entities.Hero
 import com.mylivn.data.local.mappers.toModel
 import com.mylivn.databinding.ActivityHeroBinding
 import com.mylivn.ui.adapter.*
 import com.mylivn.ui.viewmodels.*
 import kotlinx.android.synthetic.main.activity_hero.*
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -80,22 +76,13 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
     }
 
     private fun fetchHeroes() {
-        lifecycleScope.launch {
-            if (marvelViewModel.areItemsPresent()) {
-                marvelViewModel.fetchMarvelHeroes().observe(this@HeroActivity) {
-                    lifecycleScope.launch {
-                        heroRecyclerViewAdapter.submitData(it.map { hero: Hero -> hero.toModel() })
-                    }
-                }
-            } else {
+        marvelViewModel.fetchMarvelHeroes().observe(this@HeroActivity) {
+            if (it.isEmpty()) {
                 binding.lottieLoadingAnimation.visibility = View.VISIBLE
                 binding.mainView.visibility = View.GONE
                 marvelViewModel.fetchCharacters()
-                marvelViewModel.fetchMarvelHeroes().observe(this@HeroActivity) {
-                    lifecycleScope.launch {
-                        heroRecyclerViewAdapter.submitData(it.map { hero: Hero -> hero.toModel() })
-                    }
-                }
+            } else {
+                heroRecyclerViewAdapter.submitList(it.map { hero -> hero.toModel() })
             }
         }
     }
@@ -109,29 +96,21 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
 
         comicsViewModel.getHeroComics(heroId)
             .observe(this@HeroActivity) {
-                lifecycleScope.launch {
-                    comicsRecyclerViewAdapter.submitData(it.map { comics -> comics.toModel() })
-                }
+                comicsRecyclerViewAdapter.submitList(it.map { comics -> comics.toModel() })
             }
 
         seriesViewModel.getHeroSeries(heroId)
             .observe(this@HeroActivity) {
-                lifecycleScope.launch {
-                    seriesRecyclerViewAdapter.submitData(it.map { series -> series.toModel() })
-                }
+                seriesRecyclerViewAdapter.submitList(it.map { series -> series.toModel() })
             }
 
         storiesViewModel.getHeroStories(heroId)
             .observe(this@HeroActivity) {
-                lifecycleScope.launch {
-                    storiesRecyclerViewAdapter.submitData(it.map { stories -> stories.toModel() })
-                }
+                storiesRecyclerViewAdapter.submitList(it.map { stories -> stories.toModel() })
             }
         eventsViewModel.getHeroEvents(heroId)
             .observe(this@HeroActivity) {
-                lifecycleScope.launch {
-                    eventsRecyclerViewAdapter.submitData(it.map { events -> events.toModel() })
-                }
+                eventsRecyclerViewAdapter.submitList(it.map { events -> events.toModel() })
             }
     }
 
