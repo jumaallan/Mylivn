@@ -8,25 +8,23 @@ import com.mylivn.core.network.NetworkResult
 import com.mylivn.data.local.entities.*
 
 val comicsSample = listOf(
-    Comics(0, 1, "", "")
+    Comics(0, 1, "One", "uri")
 )
 
 val eventsSample = listOf(
-    Events(0, 1, "One", ""),
-    Events(0, 2, "Two", ""),
-    Events(0, 3, "Three", "")
+    Events(0, 1, "One", "uri")
 )
 
 val heroSample = listOf(
-    Hero(0, 1, "", "", "")
+    Hero(0, 1, "One", "description", "thumbnail")
 )
 
 val seriesSample = listOf(
-    Series(0, 1, "", "")
+    Series(0, 1, "One", "uri")
 )
 
 val storiesSample = listOf(
-    Stories(0, 1, "", "", "")
+    Stories(0, 1, "One", "uri", "type")
 )
 
 val heroResponse = HeroesResponse(

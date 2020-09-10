@@ -27,7 +27,7 @@ internal class EventsDaoTest : BaseTest() {
         eventsDao.insert(eventsSample)
         val event = eventsDao.getHeroEvents(1)
         event.test {
-            assertEquals(listOf(Events(1, 1, "One", "")), expectItem())
+            assertEquals(listOf(Events(1, 1, "One", "uri")), expectItem())
         }
     }
 }

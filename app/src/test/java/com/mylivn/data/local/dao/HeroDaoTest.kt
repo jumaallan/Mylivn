@@ -1,6 +1,7 @@
 package com.mylivn.data.local.dao
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.jraska.livedata.test
 import com.mylivn.BaseTest
 import com.mylivn.data.sample.heroSample
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -21,6 +22,6 @@ internal class HeroDaoTest : BaseTest() {
     fun `test inserting and retrieving hero`() = runBlockingTest {
         heroDao.insert(heroSample)
         val hero = heroDao.getHero(1)
-        // MatcherAssert.assertThat(comic., `is`(testCharacters[0].name))
+        hero.test().assertHasValue()
     }
 }
