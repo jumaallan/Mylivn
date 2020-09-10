@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import com.mylivn.R
 import com.mylivn.core.network.NetworkResult
+import com.mylivn.core.utils.hide
+import com.mylivn.core.utils.show
 import com.mylivn.data.local.mappers.toModel
 import com.mylivn.databinding.ActivityHeroBinding
 import com.mylivn.ui.adapter.*
@@ -96,20 +98,40 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
 
         comicsViewModel.getHeroComics(heroId)
             .observe(this@HeroActivity) {
+                if (it.isEmpty()) {
+                    emptyViewComics.show()
+                    tvComicsLabel.hide()
+                    recyclerViewHeroComics.hide()
+                }
                 comicsRecyclerViewAdapter.submitList(it.map { comics -> comics.toModel() })
             }
 
         seriesViewModel.getHeroSeries(heroId)
             .observe(this@HeroActivity) {
+                if (it.isEmpty()) {
+                    emptyViewSeries.show()
+                    tvSeriesLabel.hide()
+                    recyclerViewHeroSeries.hide()
+                }
                 seriesRecyclerViewAdapter.submitList(it.map { series -> series.toModel() })
             }
 
         storiesViewModel.getHeroStories(heroId)
             .observe(this@HeroActivity) {
+                if (it.isEmpty()) {
+                    emptyViewStories.show()
+                    tvStoriesLabel.hide()
+                    recyclerViewHeroStories.hide()
+                }
                 storiesRecyclerViewAdapter.submitList(it.map { stories -> stories.toModel() })
             }
         eventsViewModel.getHeroEvents(heroId)
             .observe(this@HeroActivity) {
+                if (it.isEmpty()) {
+                    emptyViewEvents.show()
+                    tvEventsLabel.hide()
+                    recyclerViewHeroEvents.hide()
+                }
                 eventsRecyclerViewAdapter.submitList(it.map { events -> events.toModel() })
             }
     }
