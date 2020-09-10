@@ -111,5 +111,4 @@ class MarvelRepository(
 
     suspend fun areItemsPresent(): Boolean =
         heroDao.fetchAllHeroes().isNotEmpty()
-
 }
