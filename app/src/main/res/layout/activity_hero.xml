@@ -120,18 +120,63 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardViewHeroDetails" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewHeroSeries"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutSeries"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvSeriesLabel"
-                tools:itemCount="4"
-                tools:listitem="@layout/item_series" />
+                app:layout_constraintTop_toBottomOf="@id/tvSeriesLabel">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewHeroSeries"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:itemCount="4"
+                    tools:listitem="@layout/item_series" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/emptyViewSeries"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_small"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/iv_empty_icon_series"
+                        android:layout_width="80dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_empty_results"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:gravity="center_horizontal"
+                        android:text="@string/layout_series_no_info"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="@id/iv_empty_icon_series"
+                        app:layout_constraintStart_toStartOf="@id/iv_empty_icon_series"
+                        app:layout_constraintTop_toBottomOf="@id/iv_empty_icon_series" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvComicsLabel"
@@ -141,20 +186,65 @@
                 android:paddingEnd="@dimen/padding_small"
                 android:text="@string/text_hero_comics_label"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/recyclerViewHeroSeries" />
+                app:layout_constraintTop_toBottomOf="@id/layoutSeries" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewHeroComics"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutComics"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvComicsLabel"
-                tools:itemCount="1"
-                tools:listitem="@layout/item_comics" />
+                app:layout_constraintTop_toBottomOf="@id/tvComicsLabel">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewHeroComics"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_comics" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/emptyViewComics"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_small"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/iv_empty_icon_comics"
+                        android:layout_width="80dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_empty_results"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:gravity="center_horizontal"
+                        android:text="@string/layout_comics_no_info"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="@id/iv_empty_icon_comics"
+                        app:layout_constraintStart_toStartOf="@id/iv_empty_icon_comics"
+                        app:layout_constraintTop_toBottomOf="@id/iv_empty_icon_comics" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvEventsLabel"
@@ -164,20 +254,65 @@
                 android:paddingEnd="@dimen/padding_small"
                 android:text="@string/text_hero_events_label"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/recyclerViewHeroComics" />
+                app:layout_constraintTop_toBottomOf="@id/layoutComics" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewHeroEvents"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutEvents"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvEventsLabel"
-                tools:itemCount="4"
-                tools:listitem="@layout/item_events" />
+                app:layout_constraintTop_toBottomOf="@id/tvEventsLabel">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewHeroEvents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:itemCount="4"
+                    tools:listitem="@layout/item_events" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/emptyViewEvents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_small"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/iv_empty_icon_events"
+                        android:layout_width="80dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_empty_results"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:gravity="center_horizontal"
+                        android:text="@string/layout_events_no_info"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="@id/iv_empty_icon_events"
+                        app:layout_constraintStart_toStartOf="@id/iv_empty_icon_events"
+                        app:layout_constraintTop_toBottomOf="@id/iv_empty_icon_events" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvStoriesLabel"
@@ -187,20 +322,65 @@
                 android:paddingEnd="@dimen/padding_small"
                 android:text="@string/text_hero_stories_label"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/recyclerViewHeroEvents" />
+                app:layout_constraintTop_toBottomOf="@id/layoutEvents" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewHeroStories"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutStories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvStoriesLabel"
-                tools:itemCount="4"
-                tools:listitem="@layout/item_stories" />
+                app:layout_constraintTop_toBottomOf="@id/tvStoriesLabel">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewHeroStories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:itemCount="4"
+                    tools:listitem="@layout/item_stories" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/emptyViewStories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_small"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/iv_empty_icon_stories"
+                        android:layout_width="80dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_empty_results"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:gravity="center_horizontal"
+                        android:text="@string/layout_stories_no_info"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="@id/iv_empty_icon_stories"
+                        app:layout_constraintStart_toStartOf="@id/iv_empty_icon_stories"
+                        app:layout_constraintTop_toBottomOf="@id/iv_empty_icon_stories" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lottieLoadingAnimation"
@@ -220,8 +400,8 @@
                 android:id="@+id/mainView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:constraint_referenced_ids="recyclerViewHero,recyclerViewHeroComics,
-            recyclerViewHeroEvents,recyclerViewHeroSeries,recyclerViewHeroStories,cardViewHeroDetails,
+                app:constraint_referenced_ids="recyclerViewHero,layoutSeries,
+            layoutComics,layoutEvents,layoutStories,cardViewHeroDetails,
             tvComicsLabel,tvDetailsLabel,tvEventsLabel,tvStoriesLabel,tvSeriesLabel" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

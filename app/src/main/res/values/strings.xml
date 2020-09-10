@@ -1,8 +1,14 @@
 <resources>
-  <string name="app_name">Mylivn</string>
+    <string name="app_name">Mylivn</string>
+
     <string name="text_hero_stories_label">Stories</string>
     <string name="text_hero_events_label">Events</string>
     <string name="text_hero_comics_label">Comics</string>
     <string name="text_hero_details_label">Hero Details</string>
     <string name="text_hero_series_label">Series</string>
+
+    <string name="layout_series_no_info">No series information available</string>
+    <string name="layout_comics_no_info">No comics information available</string>
+    <string name="layout_events_no_info">No events information available</string>
+    <string name="layout_stories_no_info">No stories information available</string>
 </resources>
