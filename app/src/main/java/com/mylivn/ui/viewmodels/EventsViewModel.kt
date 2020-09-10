@@ -1,6 +1,8 @@
 package com.mylivn.ui.viewmodels
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
@@ -12,6 +14,6 @@ class EventsViewModel(
     private val eventsRepository: EventsRepository
 ) : ViewModel() {
 
-    fun getHeroEvents(heroId: Int): Flow<PagingData<Events>> =
-        eventsRepository.getHeroEvents(heroId).cachedIn(viewModelScope)
+    fun getHeroEvents(heroId: Int): LiveData<PagingData<Events>> =
+        eventsRepository.getHeroEvents(heroId).cachedIn(viewModelScope).asLiveData()
 }

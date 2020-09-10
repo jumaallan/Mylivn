@@ -42,7 +42,9 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
         heroRecyclerViewAdapter = HeroRecyclerViewAdapter {
             toast(it.heroName)
             fetchHeroDetails(it.heroId)
+
         }
+
 
         recyclerViewHero.apply {
             adapter = heroRecyclerViewAdapter
@@ -65,21 +67,42 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
         }
     }
 
-    private fun fetchHeroes() = lifecycleScope.launchWhenStarted {
+    private fun fetchHeroes() {
         marvelViewModel.fetchCharacters()
-        marvelViewModel.fetchMarvelHeroes()
-            .collectLatest { heroRecyclerViewAdapter.submitData(it.map { hero: Hero -> hero.toModel() }) }
+        marvelViewModel.fetchMarvelHeroes().observe(this@HeroActivity) {
+            lifecycleScope.launch {
+                heroRecyclerViewAdapter.submitData(it.map { hero: Hero -> hero.toModel() })
+            }
+        }
     }
 
-    private fun fetchHeroDetails(heroId: Int) = lifecycleScope.launchWhenStarted {
+    private fun fetchHeroDetails(heroId: Int) {
         comicsViewModel.getHeroComics(heroId)
-            .collectLatest { comicsRecyclerViewAdapter.submitData(it.map { comics -> comics.toModel() }) }
+            .observe(this@HeroActivity) {
+                lifecycleScope.launch {
+                    comicsRecyclerViewAdapter.submitData(it.map { comics -> comics.toModel() })
+                }
+            }
+
         seriesViewModel.getHeroSeries(heroId)
-            .collectLatest { seriesRecyclerViewAdapter.submitData(it.map { series -> series.toModel() }) }
+            .observe(this@HeroActivity) {
+                lifecycleScope.launch {
+                    seriesRecyclerViewAdapter.submitData(it.map { series -> series.toModel() })
+                }
+            }
+
         storiesViewModel.getHeroStories(heroId)
-            .collectLatest { storiesRecyclerViewAdapter.submitData(it.map { stories -> stories.toModel() }) }
+            .observe(this@HeroActivity) {
+                lifecycleScope.launch {
+                    storiesRecyclerViewAdapter.submitData(it.map { stories -> stories.toModel() })
+                }
+            }
         eventsViewModel.getHeroEvents(heroId)
-            .collectLatest { eventsRecyclerViewAdapter.submitData(it.map { events -> events.toModel() }) }
+            .observe(this@HeroActivity) {
+                lifecycleScope.launch {
+                    eventsRecyclerViewAdapter.submitData(it.map { events -> events.toModel() })
+                }
+            }
     }
 
     override val layoutResId: Int

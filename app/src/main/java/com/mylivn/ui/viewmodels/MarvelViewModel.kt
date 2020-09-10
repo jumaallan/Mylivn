@@ -1,6 +1,8 @@
 package com.mylivn.ui.viewmodels
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
@@ -13,8 +15,8 @@ class MarvelViewModel(
     private val marvelRepository: MarvelRepository
 ) : ViewModel() {
 
-    fun fetchMarvelHeroes(): Flow<PagingData<Hero>> =
-        marvelRepository.getMarvelHeroes()
+    fun fetchMarvelHeroes(): LiveData<PagingData<Hero>> =
+        marvelRepository.getMarvelHeroes().asLiveData()
 
 
     fun fetchCharacters() {
