@@ -83,6 +83,7 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
                 marvelViewModel.fetchCharacters()
             } else {
                 heroRecyclerViewAdapter.submitList(it.map { hero -> hero.toModel() })
+                it.firstOrNull()?.heroId?.let { heroId -> fetchHeroDetails(heroId) }
             }
         }
     }
