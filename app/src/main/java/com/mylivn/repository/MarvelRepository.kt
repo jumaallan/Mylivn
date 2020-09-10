@@ -1,5 +1,6 @@
 package com.mylivn.repository
 
+import androidx.lifecycle.LiveData
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -112,4 +113,6 @@ class MarvelRepository(
         ).flow
 
     suspend fun areItemsPresent(): Boolean = heroDao.fetchAllHeroes().isNotEmpty()
+
+    fun fetchHeroes(): LiveData<List<Hero>> = heroDao.fetchHeroes()
 }

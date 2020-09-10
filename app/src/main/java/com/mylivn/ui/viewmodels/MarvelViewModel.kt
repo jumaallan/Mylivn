@@ -12,6 +12,9 @@ class MarvelViewModel(
     private val marvelRepository: MarvelRepository
 ) : ViewModel() {
     val marvelResponse = MutableLiveData<NetworkResult<HeroesResponse>>()
+    val heroes: LiveData<List<Hero>> by lazy {
+        marvelRepository.fetchHeroes()
+    }
 
     fun fetchMarvelHeroes(): LiveData<PagingData<Hero>> =
         marvelRepository.getMarvelHeroes().asLiveData()

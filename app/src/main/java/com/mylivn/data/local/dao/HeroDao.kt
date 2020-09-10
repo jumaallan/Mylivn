@@ -1,5 +1,6 @@
 package com.mylivn.data.local.dao
 
+import androidx.lifecycle.LiveData
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Query
@@ -16,4 +17,7 @@ interface HeroDao : BaseDao<Hero> {
 
     @Query("SELECT * FROM hero")
     suspend fun fetchAllHeroes(): List<Hero>
+
+    @Query("SELECT * FROM hero")
+    fun fetchHeroes(): LiveData<List<Hero>>
 }

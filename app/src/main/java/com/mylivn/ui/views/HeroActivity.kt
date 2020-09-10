@@ -5,8 +5,8 @@ import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.map
 import com.mylivn.R
+import com.mylivn.core.data.models.HeroesResponse
 import com.mylivn.core.network.NetworkResult
-import com.mylivn.core.utils.toast
 import com.mylivn.data.local.entities.Hero
 import com.mylivn.data.local.mappers.toModel
 import com.mylivn.databinding.ActivityHeroBinding
@@ -37,9 +37,10 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         fetchHeroes()
+
         heroRecyclerViewAdapter = HeroRecyclerViewAdapter {
-            toast(it.heroName)
             fetchHeroDetails(it.heroId)
         }
 
@@ -68,6 +69,7 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
                 is NetworkResult.Success -> {
                     binding.lottieLoadingAnimation.visibility = View.GONE
                     binding.mainView.visibility = View.VISIBLE
+                    showFirstItemDetails(heroesResponse.data)
                 }
                 is NetworkResult.NetworkError -> {
                     binding.lottieLoadingAnimation.visibility = View.GONE
@@ -79,9 +81,16 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
         }
     }
 
+    private fun showFirstItemDetails(data: HeroesResponse) {
+        data.data.results.firstOrNull()?.id?.let { fetchHeroDetails(it) }
+    }
+
     private fun fetchHeroes() {
         lifecycleScope.launch {
             if (marvelViewModel.areItemsPresent()) {
+                marvelViewModel.heroes.observe(this@HeroActivity) { heroes ->
+                    heroes.firstOrNull()?.heroId?.let { fetchHeroDetails(it) }
+                }
                 marvelViewModel.fetchMarvelHeroes().observe(this@HeroActivity) {
                     lifecycleScope.launch {
                         heroRecyclerViewAdapter.submitData(it.map { hero: Hero -> hero.toModel() })
