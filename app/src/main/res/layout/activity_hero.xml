@@ -10,219 +10,222 @@
             type="com.mylivn.data.models.MarvelHero" />
     </data>
 
-   <androidx.core.widget.NestedScrollView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:fillViewport="true">
-       <androidx.constraintlayout.widget.ConstraintLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:padding="@dimen/padding_small"
-           tools:context=".ui.views.HeroActivity">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-           <androidx.recyclerview.widget.RecyclerView
-               android:id="@+id/recyclerViewHero"
-               android:layout_width="match_parent"
-               android:layout_height="0dp"
-               android:clipToPadding="false"
-               android:orientation="horizontal"
-               app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent"
-               tools:listitem="@layout/item_hero" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_small"
+            tools:context=".ui.views.HeroActivity">
 
-           <androidx.appcompat.widget.AppCompatTextView
-               android:id="@+id/tvDetailsLabel"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/text_hero_details_label"
-               android:padding="@dimen/padding_normal"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/recyclerViewHero"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewHero"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/item_hero" />
 
-           <androidx.cardview.widget.CardView
-               android:id="@+id/cardViewHeroDetails"
-               android:layout_width="match_parent"
-               android:layout_height="120dp"
-               app:cardCornerRadius="@dimen/card_corner_radius"
-               app:cardElevation="4dp"
-               app:cardUseCompatPadding="true"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/tvDetailsLabel">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDetailsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/padding_small"
+                android:paddingEnd="@dimen/padding_small"
+                android:text="@string/text_hero_details_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recyclerViewHero" />
 
-               <androidx.constraintlayout.widget.ConstraintLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:padding="@dimen/padding_medium">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewHeroDetails"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailsLabel">
 
-                   <androidx.appcompat.widget.AppCompatTextView
-                       android:id="@+id/textViewCharacterBirthYear"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_marginTop="4dp"
-                       app:layout_constraintStart_toStartOf="parent"
-                       app:layout_constraintTop_toTopOf="parent" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_medium">
 
-                   <androidx.appcompat.widget.AppCompatTextView
-                       android:id="@+id/textViewBirthYear"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_marginTop="4dp"
-                       android:text="869BBY"
-                       app:layout_constraintEnd_toEndOf="parent"
-                       app:layout_constraintTop_toTopOf="parent" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textViewCharacterBirthYear"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textViewBirthYear"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="869BBY"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                   <androidx.appcompat.widget.AppCompatTextView
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_marginTop="4dp"
-                       app:layout_constraintStart_toStartOf="parent"
-                       app:layout_constraintTop_toBottomOf="@id/textViewCharacterBirthYear" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textViewCharacterBirthYear" />
 
-                   <androidx.appcompat.widget.AppCompatTextView
-                       android:id="@+id/textViewHeightCm"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_marginStart="@dimen/margin_small"
-                       android:layout_marginTop="@dimen/margin_small"
-                       android:layout_marginEnd="@dimen/spacing_large"
-                       app:layout_constraintBottom_toBottomOf="parent"
-                       app:layout_constraintEnd_toStartOf="@id/textViewCharacterHeight"
-                       tools:text="100 CM" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textViewHeightCm"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_small"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_marginEnd="@dimen/spacing_large"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/textViewCharacterHeight"
+                        tools:text="100 CM" />
 
-                   <androidx.appcompat.widget.AppCompatTextView
-                       android:id="@+id/textViewCharacterHeight"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_marginStart="@dimen/margin_small"
-                       android:layout_marginTop="4dp"
-                       android:layout_weight=".25"
-                       app:layout_constraintBottom_toBottomOf="parent"
-                       app:layout_constraintEnd_toEndOf="parent"
-                       app:layout_constraintTop_toBottomOf="@id/textViewBirthYear"
-                       tools:text="12.546 Inches" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/textViewCharacterHeight"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_small"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight=".25"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textViewBirthYear"
+                        tools:text="12.546 Inches" />
 
-               </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-           </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-           <androidx.appcompat.widget.AppCompatTextView
-               android:id="@+id/tvSeriesLabel"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/text_hero_series_label"
-               android:padding="@dimen/padding_normal"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/cardViewHeroDetails"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSeriesLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/padding_small"
+                android:paddingEnd="@dimen/padding_small"
+                android:text="@string/text_hero_series_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardViewHeroDetails" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewHeroSeries"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvSeriesLabel"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_series" />
 
-           <androidx.recyclerview.widget.RecyclerView
-               android:id="@+id/recyclerViewHeroSeries"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:clipToPadding="false"
-               android:orientation="horizontal"
-               app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/tvSeriesLabel"
-               tools:itemCount="4"
-               tools:listitem="@layout/item_series" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvComicsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/padding_small"
+                android:paddingEnd="@dimen/padding_small"
+                android:text="@string/text_hero_comics_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recyclerViewHeroSeries" />
 
-           <androidx.appcompat.widget.AppCompatTextView
-               android:id="@+id/tvComicsLabel"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/text_hero_comics_label"
-               android:padding="@dimen/padding_normal"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/recyclerViewHeroSeries"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewHeroComics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvComicsLabel"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_comics" />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEventsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/padding_small"
+                android:paddingEnd="@dimen/padding_small"
+                android:text="@string/text_hero_events_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recyclerViewHeroComics" />
 
-           <androidx.recyclerview.widget.RecyclerView
-               android:id="@+id/recyclerViewHeroComics"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:clipToPadding="false"
-               android:orientation="horizontal"
-               app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/tvComicsLabel"
-               tools:itemCount="1"
-               tools:listitem="@layout/item_comics" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewHeroEvents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvEventsLabel"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_events" />
 
-           <androidx.appcompat.widget.AppCompatTextView
-               android:id="@+id/tvEventsLabel"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/text_hero_events_label"
-               android:padding="@dimen/padding_normal"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/recyclerViewHeroComics"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStoriesLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/padding_small"
+                android:paddingEnd="@dimen/padding_small"
+                android:text="@string/text_hero_stories_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recyclerViewHeroEvents" />
 
-           <androidx.recyclerview.widget.RecyclerView
-               android:id="@+id/recyclerViewHeroEvents"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:clipToPadding="false"
-               android:orientation="horizontal"
-               app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/tvEventsLabel"
-               tools:itemCount="4"
-               tools:listitem="@layout/item_events" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewHeroStories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvStoriesLabel"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_stories" />
 
-           <androidx.appcompat.widget.AppCompatTextView
-               android:id="@+id/tvStoriesLabel"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/text_hero_stories_label"
-               android:padding="@dimen/padding_normal"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/recyclerViewHeroEvents"/>
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieLoadingAnimation"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="loading_spinning_circle.json"
+                app:lottie_loop="true"
+                app:lottie_speed="1" />
 
-           <androidx.recyclerview.widget.RecyclerView
-               android:id="@+id/recyclerViewHeroStories"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:clipToPadding="false"
-               android:orientation="horizontal"
-               app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@id/tvStoriesLabel"
-               tools:itemCount="4"
-               tools:listitem="@layout/item_stories" />
-
-           <com.airbnb.lottie.LottieAnimationView
-               android:id="@+id/lottieLoadingAnimation"
-               android:layout_width="200dp"
-               android:layout_height="200dp"
-               app:lottie_autoPlay="true"
-               android:visibility="gone"
-               app:lottie_fileName="loading_spinning_circle.json"
-               app:lottie_loop="true"
-               app:lottie_speed="1"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintTop_toTopOf="parent"
-               app:layout_constraintBottom_toBottomOf="parent"/>
-
-           <androidx.constraintlayout.widget.Group
-               android:id="@+id/mainView"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               app:constraint_referenced_ids="recyclerViewHero,recyclerViewHeroComics,
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/mainView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="recyclerViewHero,recyclerViewHeroComics,
             recyclerViewHeroEvents,recyclerViewHeroSeries,recyclerViewHeroStories,cardViewHeroDetails,
-            tvComicsLabel,tvDetailsLabel,tvEventsLabel,tvStoriesLabel,tvSeriesLabel"/>
+            tvComicsLabel,tvDetailsLabel,tvEventsLabel,tvStoriesLabel,tvSeriesLabel" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-       </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
-   </androidx.core.widget.NestedScrollView>
 </layout>
