@@ -65,10 +65,12 @@
                         android:id="@+id/textViewHeroName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/oxygen_bold"
                         android:text="@{hero.heroName}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Hero Name" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
@@ -78,7 +80,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/textViewHeroName" />
+                        app:layout_constraintTop_toBottomOf="@id/textViewHeroName"
+                        tools:text="Hero description comes in here, and it can be long or short" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

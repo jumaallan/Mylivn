@@ -1,8 +1,5 @@
 package com.mylivn.repository
 
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
 import com.mylivn.core.data.api.MarvelAPI
 import com.mylivn.core.data.models.HeroesResponse
 import com.mylivn.core.network.NetworkResult
@@ -103,12 +100,5 @@ class MarvelRepository(
         return marvelResponse
     }
 
-    fun getMarvelHeroes(): Flow<PagingData<Hero>> =
-        Pager(
-            PagingConfig(pageSize = 40, enablePlaceholders = false, prefetchDistance = 3),
-            pagingSourceFactory = { heroDao.getHeroes() }
-        ).flow
-
-    suspend fun areItemsPresent(): Boolean =
-        heroDao.fetchAllHeroes().isNotEmpty()
+    fun getMarvelHeroes(): Flow<List<Hero>> = heroDao.getHeroes()
 }

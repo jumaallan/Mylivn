@@ -1,7 +1,6 @@
 package com.mylivn.ui.viewmodels
 
 import androidx.lifecycle.*
-import androidx.paging.PagingData
 import com.mylivn.core.data.models.HeroesResponse
 import com.mylivn.core.network.NetworkResult
 import com.mylivn.data.local.entities.Hero
@@ -13,7 +12,7 @@ class MarvelViewModel(
 ) : ViewModel() {
     val marvelResponse = MutableLiveData<NetworkResult<HeroesResponse>>()
 
-    fun fetchMarvelHeroes(): LiveData<PagingData<Hero>> =
+    fun fetchMarvelHeroes(): LiveData<List<Hero>> =
         marvelRepository.getMarvelHeroes().asLiveData()
 
     fun fetchCharacters() {
@@ -21,7 +20,4 @@ class MarvelViewModel(
             marvelResponse.postValue(marvelRepository.fetchMarvelHeroes())
         }
     }
-
-    suspend fun areItemsPresent(): Boolean =
-        marvelRepository.areItemsPresent()
 }
