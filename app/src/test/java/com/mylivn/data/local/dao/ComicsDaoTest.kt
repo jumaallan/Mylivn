@@ -1,26 +1,29 @@
-package com.mylivn.data.dao
+package com.mylivn.data.local.dao
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.paging.PagingData
 import com.mylivn.BaseTest
-import com.mylivn.data.sample.heroSample
+import com.mylivn.data.sample.comicsSample
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import org.hamcrest.CoreMatchers.`is`
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
-internal class HeroDaoTest : BaseTest() {
+internal class ComicsDaoTest : BaseTest() {
 
     @get:Rule
     val rule = InstantTaskExecutorRule()
 
     @ExperimentalCoroutinesApi
     @Test
-    fun `test inserting and retrieving hero`() = runBlockingTest {
-        heroDao.insert(heroSample)
-        val hero = heroDao.getHero(1)
-        // MatcherAssert.assertThat(comic., `is`(testCharacters[0].name))
+    fun `test inserting and retrieving comics`() = runBlockingTest {
+        comicsDao.insert(comicsSample)
+        val comic = comicsDao.getHeroComics(1)
+        assertThat(comic, `is`(PagingData.from(comicsSample)))
     }
 }
