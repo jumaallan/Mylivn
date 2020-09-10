@@ -8,7 +8,6 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.mylivn.data.local.entities.Events
 import com.mylivn.repository.EventsRepository
-import kotlinx.coroutines.flow.Flow
 
 class EventsViewModel(
     private val eventsRepository: EventsRepository

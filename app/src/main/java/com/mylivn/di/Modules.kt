@@ -43,7 +43,7 @@ private val daoModule: Module = module {
 }
 
 private val repositoryModule: Module = module {
-    single { MarvelRepository(get(), get(), get(), get(), get(), get(), get()) }
+    single { MarvelRepository(get(), get(), get(), get(), get(), get()) }
     single { HeroRepository(get()) }
     single { ComicsRepository(get()) }
     single { EventsRepository(get()) }

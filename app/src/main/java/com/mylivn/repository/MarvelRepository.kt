@@ -9,24 +9,21 @@ import com.mylivn.core.network.NetworkResult
 import com.mylivn.core.network.safeApiCall
 import com.mylivn.data.local.dao.*
 import com.mylivn.data.local.entities.*
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import timber.log.Timber
 
 class MarvelRepository(
     private val marvelAPI: MarvelAPI,
-    private val marvelKeysDao: MarvelKeysDao,
     private val heroDao: HeroDao,
     private val comicsDao: ComicsDao,
     private val eventsDao: EventsDao,
     private val seriesDao: SeriesDao,
     private val storiesDao: StoriesDao,
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
 
     suspend fun fetchMarvelHeroes(): NetworkResult<HeroesResponse> {
-        val marvelResponse = safeApiCall(ioDispatcher) {
+        val marvelResponse = safeApiCall(Dispatchers.IO) {
             return@safeApiCall marvelAPI.fetchHeroes(
                 "a5df6fc2b951d20f5aaef40803ab166c",
                 "d1489c94740f45d9c0fd62234fb2432a",
@@ -34,6 +31,11 @@ class MarvelRepository(
                 limit = 40,
             )
         }
+        saveHeroes(marvelResponse)
+        return marvelResponse
+    }
+
+    private suspend fun saveHeroes(marvelResponse: NetworkResult<HeroesResponse>) {
         when (marvelResponse) {
             is NetworkResult.Success -> {
                 marvelResponse.data.data.results.forEach { hero ->
@@ -101,7 +103,6 @@ class MarvelRepository(
                 Timber.d("A network error occurred when making your request")
             }
         }
-        return marvelResponse
     }
 
     fun getMarvelHeroes(): Flow<PagingData<Hero>> =
@@ -110,8 +111,5 @@ class MarvelRepository(
             pagingSourceFactory = { heroDao.getHeroes() }
         ).flow
 
-    suspend fun areItemsPresent(): Boolean {
-        return heroDao.fetchAllHeroes().isNotEmpty()
-    }
-
+    suspend fun areItemsPresent(): Boolean = heroDao.fetchAllHeroes().isNotEmpty()
 }
