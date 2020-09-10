@@ -2,8 +2,8 @@ package com.mylivn.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.mylivn.data.models.HeroComics
@@ -15,7 +15,7 @@ import com.mylivn.databinding.ItemComicsBinding
  * This adapter is responsible for setting the comics list, as an horizontal view
  */
 class ComicsRecyclerViewAdapter :
-    PagingDataAdapter<HeroComics, ComicsRecyclerViewAdapter.ViewHolder>(
+    ListAdapter<HeroComics, ComicsRecyclerViewAdapter.ViewHolder>(
         ComicsDiffer
     ) {
 

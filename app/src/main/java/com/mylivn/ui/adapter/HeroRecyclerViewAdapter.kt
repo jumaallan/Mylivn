@@ -2,8 +2,8 @@ package com.mylivn.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.mylivn.core.utils.toHttps
@@ -18,7 +18,7 @@ import com.mylivn.databinding.ItemHeroBinding
 typealias ClickListener = (MarvelHero) -> Unit
 
 class HeroRecyclerViewAdapter(private val clickListener: ClickListener) :
-    PagingDataAdapter<MarvelHero, HeroRecyclerViewAdapter.ViewHolder>(
+    ListAdapter<MarvelHero, HeroRecyclerViewAdapter.ViewHolder>(
         HeroesDiffer
     ) {
 

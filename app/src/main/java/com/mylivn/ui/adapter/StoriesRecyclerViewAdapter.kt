@@ -2,8 +2,8 @@ package com.mylivn.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.mylivn.data.models.HeroStories
@@ -15,7 +15,7 @@ import com.mylivn.databinding.ItemStoriesBinding
  * This adapter is responsible for setting the stories list, as an horizontal view
  */
 class StoriesRecyclerViewAdapter :
-    PagingDataAdapter<HeroStories, StoriesRecyclerViewAdapter.ViewHolder>(
+    ListAdapter<HeroStories, StoriesRecyclerViewAdapter.ViewHolder>(
         StoriesDiffer
     ) {
 
