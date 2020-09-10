@@ -213,7 +213,7 @@
             android:layout_height="wrap_content"
             app:constraint_referenced_ids="recyclerViewHero,recyclerViewHeroComics,
             recyclerViewHeroEvents,recyclerViewHeroSeries,recyclerViewHeroStories,cardViewHeroDetails,
-            tvComicsLabel,tvDetailsLabel,tvEventsLabel,tvStoriesLabel"/>
+            tvComicsLabel,tvDetailsLabel,tvEventsLabel,tvStoriesLabel,tvSeriesLabel"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
