@@ -6,6 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.mylivn.R
 import com.mylivn.data.models.HeroComics
 import com.mylivn.databinding.ItemComicsBinding
 
@@ -30,7 +31,7 @@ class ComicsRecyclerViewAdapter :
 
         fun bind(comics: HeroComics) {
             binding.comics = comics
-            binding.imageViewComicCover.load(comics.resourceURI)
+            binding.imageViewComicCover.load(R.mipmap.ic_launcher)
             binding.executePendingBindings()
         }
     }
