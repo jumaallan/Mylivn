@@ -1,9 +1,11 @@
 package com.mylivn.ui.views
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.map
 import com.mylivn.R
+import com.mylivn.core.network.NetworkResult
 import com.mylivn.core.utils.toast
 import com.mylivn.data.local.entities.Hero
 import com.mylivn.data.local.mappers.toModel
@@ -65,9 +67,26 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
         recyclerViewHeroEvents.apply {
             adapter = eventsRecyclerViewAdapter
         }
+
+        marvelViewModel.marvelResponse.observe(this) { heroesResponse ->
+            when (heroesResponse) {
+                is NetworkResult.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.mainView.visibility = View.VISIBLE
+                }
+                is NetworkResult.NetworkError -> {
+                    binding.progressBar.visibility = View.GONE
+                }
+                is NetworkResult.ServerError -> {
+                    binding.progressBar.visibility = View.GONE
+                }
+            }
+        }
     }
 
     private fun fetchHeroes() {
+        binding.progressBar.visibility = View.VISIBLE
+        binding.mainView.visibility = View.GONE
         marvelViewModel.fetchCharacters()
         marvelViewModel.fetchMarvelHeroes().observe(this@HeroActivity) {
             lifecycleScope.launch {

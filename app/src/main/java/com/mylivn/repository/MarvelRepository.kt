@@ -5,10 +5,12 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.mylivn.core.data.api.MarvelAPI
+import com.mylivn.core.data.models.HeroesResponse
 import com.mylivn.core.network.NetworkResult
 import com.mylivn.core.network.safeApiCall
 import com.mylivn.data.local.dao.*
 import com.mylivn.data.local.entities.*
+import com.mylivn.data.models.HeroResponse
 import com.mylivn.data.network.MarvelRemoteMediator
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -26,7 +28,7 @@ class MarvelRepository(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
 
-    suspend fun fetchMarvelHeroes() {
+    suspend fun fetchMarvelHeroes(): NetworkResult<HeroesResponse> {
         val marvelResponse = safeApiCall(ioDispatcher) {
             return@safeApiCall marvelAPI.fetchHeroes(
                 "a5df6fc2b951d20f5aaef40803ab166c",
@@ -102,6 +104,7 @@ class MarvelRepository(
                 Timber.d("A network error occurred when making your request")
             }
         }
+        return marvelResponse
     }
 
     fun getMarvelHeroes(): Flow<PagingData<Hero>> =
