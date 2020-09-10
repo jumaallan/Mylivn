@@ -8,7 +8,6 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.mylivn.data.local.entities.Series
 import com.mylivn.repository.SeriesRepository
-import kotlinx.coroutines.flow.Flow
 
 class SeriesViewModel(
     private val seriesRepository: SeriesRepository

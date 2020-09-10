@@ -9,12 +9,10 @@ import com.mylivn.core.network.NetworkResult
 import com.mylivn.core.utils.toast
 import com.mylivn.data.local.entities.Hero
 import com.mylivn.data.local.mappers.toModel
-import com.mylivn.data.models.MarvelHero
 import com.mylivn.databinding.ActivityHeroBinding
 import com.mylivn.ui.adapter.*
 import com.mylivn.ui.viewmodels.*
 import kotlinx.android.synthetic.main.activity_hero.*
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -31,7 +29,6 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
     private val seriesViewModel: SeriesViewModel by viewModel()
     private val storiesViewModel: StoriesViewModel by viewModel()
 
-
     private val comicsRecyclerViewAdapter = ComicsRecyclerViewAdapter()
     private val eventsRecyclerViewAdapter = EventsRecyclerViewAdapter()
     private val seriesRecyclerViewAdapter = SeriesRecyclerViewAdapter()
@@ -44,9 +41,7 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
         heroRecyclerViewAdapter = HeroRecyclerViewAdapter {
             toast(it.heroName)
             fetchHeroDetails(it.heroId)
-
         }
-
 
         recyclerViewHero.apply {
             adapter = heroRecyclerViewAdapter

@@ -32,7 +32,6 @@ class SeriesRecyclerViewAdapter :
             binding.series = series
             binding.imgSeries.load(series.resourceURI)
             binding.executePendingBindings()
-
         }
     }
 

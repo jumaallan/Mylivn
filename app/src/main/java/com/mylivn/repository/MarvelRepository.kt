@@ -16,7 +16,6 @@ import timber.log.Timber
 
 class MarvelRepository(
     private val marvelAPI: MarvelAPI,
-    private val marvelKeysDao: MarvelKeysDao,
     private val heroDao: HeroDao,
     private val comicsDao: ComicsDao,
     private val eventsDao: EventsDao,
@@ -110,8 +109,7 @@ class MarvelRepository(
             pagingSourceFactory = { heroDao.getHeroes() }
         ).flow
 
-    suspend fun areItemsPresent(): Boolean {
-        return heroDao.fetchAllHeroes().isNotEmpty()
-    }
+    suspend fun areItemsPresent(): Boolean =
+        heroDao.fetchAllHeroes().isNotEmpty()
 
 }
