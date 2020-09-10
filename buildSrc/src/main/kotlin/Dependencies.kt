@@ -69,6 +69,7 @@ object Versions {
     const val kakao = "2.3.4"
     const val mockK = "1.10.0"
     const val liveDataTesting = "1.1.2"
+    const val turbine = "0.2.1"
 }
 
 object BuildPlugins {
@@ -168,6 +169,7 @@ object TestLibraries {
     const val mockK = "io.mockk:mockk:${Versions.mockK}"
     const val androidMockK = "io.mockk:mockk-android:${Versions.mockK}"
     const val liveDataTesting = "com.jraska.livedata:testing-ktx:${Versions.liveDataTesting}"
+    const val turbine = "app.cash.turbine:turbine:${Versions.turbine}"
 }
 
 object BuildModules {
