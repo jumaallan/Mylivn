@@ -30,7 +30,7 @@ class EventsRecyclerViewAdapter :
 
         fun bind(events: HeroEvents) {
             binding.events = events
-            binding.imageViewEventUrl.load(events.resourceURI)
+            binding.imageViewEventUrl.load("https://www.eu-startups.com/wp-content/uploads/2019/12/mylivn_globe_1024-500x500.png")
             binding.executePendingBindings()
         }
     }

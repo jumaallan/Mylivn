@@ -11,7 +11,7 @@
     </data>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="170dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/card_corner_radius"
         app:cardElevation="4dp"
@@ -39,7 +39,7 @@
                 android:gravity="center"
                 android:padding="@dimen/padding_small"
                 android:text="@{events.eventName}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageViewEventUrl"
