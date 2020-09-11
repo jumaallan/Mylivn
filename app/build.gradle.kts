@@ -108,6 +108,9 @@ dependencies {
     // Lottie
     implementation(Libraries.lottie)
 
+    // Glide
+    implementation(Libraries.glide)
+
     // Debug - for debug builds only
     implementation(Libraries.timber)
     implementation(Libraries.leakCanary)

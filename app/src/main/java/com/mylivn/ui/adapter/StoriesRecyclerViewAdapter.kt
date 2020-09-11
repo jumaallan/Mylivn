@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.mylivn.R
 import com.mylivn.data.models.HeroStories
 import com.mylivn.databinding.ItemStoriesBinding
 
@@ -30,7 +31,8 @@ class StoriesRecyclerViewAdapter :
 
         fun bind(stories: HeroStories) {
             binding.stories = stories
-            binding.imageViewStoriesUrl.load(stories.resourceURI)
+            binding.imageViewStoriesUrl.setImageResource(R.drawable.ic_mylivn_placeholder)
+//            binding.imageViewStoriesUrl.load(stories.resourceURI)
             binding.executePendingBindings()
         }
     }

@@ -47,6 +47,9 @@ object Versions {
     // Lottie
     const val lottie = "3.4.0"
 
+    // Glide
+    const val glide = "4.11.0"
+
     // Gradle Plugins
     const val ktlint = "9.3.0"
     const val detekt = "1.12.0"
@@ -145,6 +148,9 @@ object Libraries {
 
     // Lottie
     const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
+
+    // Glide
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 }
 
 object TestLibraries {
