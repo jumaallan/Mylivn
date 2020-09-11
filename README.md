@@ -70,6 +70,8 @@ All the dependencies (external libraries) are defined in the single place - Grad
 
 This sections mentions some of the issues that I have come across:
 
+- Paging (Paging 3.0) - The Marvel API doesn't support pagination, and made it hard to use Paging to paginate network requests. Room also doesn't work with the paging 3.0 library well (No paging setup on this project submission)
+ 
 - UI Tests fail on an Emulator running API 26 (Android 8), and are successful on an Emulator running API 29 (Android 10)
 
 - dokka documentation task doesn't work when run from the top level Mylivn task
