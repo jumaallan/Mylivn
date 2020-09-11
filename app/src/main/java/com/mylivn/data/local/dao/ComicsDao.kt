@@ -8,6 +8,6 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ComicsDao : BaseDao<Comics> {
 
-    @Query("SELECT * FROM comics WHERE heroId =:heroId")
+    @Query("SELECT * FROM comics WHERE heroId = :heroId")
     fun getHeroComics(heroId: Int): Flow<List<Comics>>
 }
