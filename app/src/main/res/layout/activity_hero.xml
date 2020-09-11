@@ -120,6 +120,27 @@
                     tools:itemCount="4"
                     tools:listitem="@layout/item_series" />
 
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/seriesShimmerLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:shimmer_duration="800"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <include layout="@layout/item_series"/>
+                        <include layout="@layout/item_series"/>
+                        <include layout="@layout/item_series"/>
+                    </LinearLayout>
+
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/emptyViewSeries"
                     android:layout_width="match_parent"

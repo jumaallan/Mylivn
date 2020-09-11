@@ -52,6 +52,16 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageViewHeroAvatar"
                     tools:text="Iron Man" />
+                
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:paddingBottom="@dimen/padding_small"
+                    android:background="@{hero.isSelected ? @drawable/selected_circular_background : @drawable/unselected_circular_background}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textViewHeroName"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
