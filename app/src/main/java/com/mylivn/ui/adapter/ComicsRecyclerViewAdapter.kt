@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.mylivn.R
 import com.mylivn.data.models.HeroComics
 import com.mylivn.databinding.ItemComicsBinding
 
@@ -30,7 +31,8 @@ class ComicsRecyclerViewAdapter :
 
         fun bind(comics: HeroComics) {
             binding.comics = comics
-            binding.imageViewComicCover.load("https://www.eu-startups.com/wp-content/uploads/2019/12/mylivn_globe_1024-500x500.png")
+            binding.imageViewComicCover.setImageResource(R.drawable.ic_mylivn_placeholder)
+//            binding.imageViewComicCover.load("https://www.eu-startups.com/wp-content/uploads/2019/12/mylivn_globe_1024-500x500.png")
             binding.executePendingBindings()
         }
     }
