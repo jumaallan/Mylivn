@@ -7,6 +7,7 @@ import com.mylivn.core.network.NetworkResult
 import com.mylivn.core.utils.hide
 import com.mylivn.core.utils.show
 import com.mylivn.data.local.mappers.toModel
+import com.mylivn.data.models.MarvelHero
 import com.mylivn.databinding.ActivityHeroBinding
 import com.mylivn.ui.adapter.*
 import com.mylivn.ui.viewmodels.*
@@ -31,14 +32,16 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
     private val seriesRecyclerViewAdapter = SeriesRecyclerViewAdapter()
     private val storiesRecyclerViewAdapter = StoriesRecyclerViewAdapter()
     private lateinit var heroRecyclerViewAdapter: HeroRecyclerViewAdapter
+    lateinit var heroes: List<MarvelHero>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         fetchHeroes()
-
         heroRecyclerViewAdapter = HeroRecyclerViewAdapter {
             fetchHeroDetails(it.heroId)
+            updateVisibility(it)
+
         }
 
         recyclerViewHero.apply {
@@ -84,14 +87,30 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
                 binding.mainView.visibility = View.GONE
                 marvelViewModel.fetchCharacters()
             } else {
+                heroes = it.map { hero -> hero.toModel() }
                 heroRecyclerViewAdapter.submitList(it.map { hero -> hero.toModel() })
                 it.firstOrNull()?.heroId?.let { heroId -> fetchHeroDetails(heroId) }
+                it.firstOrNull()?.let { newHero ->
+                    updateVisibility(newHero.toModel())
+                }
             }
         }
     }
 
-    private fun fetchHeroDetails(heroId: Int) {
+    private fun updateVisibility(hero: MarvelHero) {
+        val heroPosition = heroes.indexOf(hero)
+        val newHero = hero.copy(
+            heroName = hero.heroName,
+            heroDescription = hero.heroDescription,
+            heroThumbnail = hero.heroThumbnail,
+            heroId = hero.heroId,
+            isSelected = true
+        )
+        binding.hero = newHero
+        heroRecyclerViewAdapter.notifyItemChanged(heroPosition, newHero)
+    }
 
+    private fun fetchHeroDetails(heroId: Int) {
         heroViewModel.getHero(heroId)
             .observe(this@HeroActivity) {
                 binding.hero = it.toModel()

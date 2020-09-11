@@ -4,5 +4,6 @@ data class MarvelHero(
     val heroName: String,
     val heroDescription: String,
     val heroThumbnail: String,
-    val heroId: Int
+    val heroId: Int,
+    val isSelected: Boolean = false
 )
