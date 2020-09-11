@@ -69,6 +69,9 @@ object Versions {
     const val kakao = "2.3.4"
     const val mockK = "1.10.0"
     const val liveDataTesting = "1.1.2"
+
+    // Facebook Shimmer
+    const val facebookShimmer = "0.5.0@aar"
 }
 
 object BuildPlugins {
@@ -145,6 +148,9 @@ object Libraries {
 
     // Lottie
     const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
+
+    // Facebook Shimmer
+    const val facebookShimmer = "com.facebook.shimmer:shimmer:${Versions.facebookShimmer}"
 }
 
 object TestLibraries {
