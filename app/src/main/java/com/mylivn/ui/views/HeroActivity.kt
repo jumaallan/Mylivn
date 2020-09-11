@@ -37,7 +37,6 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
 
         fetchHeroes()
         heroRecyclerViewAdapter = HeroRecyclerViewAdapter {
-            startShimmerAnimation()
             fetchHeroDetails(it.heroId)
             updateVisibility(it)
 
@@ -123,7 +122,6 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
         seriesViewModel.getHeroSeries(heroId)
             .observe(this@HeroActivity) {
                 seriesRecyclerViewAdapter.submitList(it.map { series -> series.toModel() })
-                stopShimmerAnimation()
             }
 
         storiesViewModel.getHeroStories(heroId)
@@ -134,15 +132,6 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
             .observe(this@HeroActivity) {
                 eventsRecyclerViewAdapter.submitList(it.map { events -> events.toModel() })
             }
-    }
-
-    private fun startShimmerAnimation() {
-        binding.seriesShimmerLayout.startShimmer()
-    }
-
-    private fun stopShimmerAnimation() {
-        binding.seriesShimmerLayout.stopShimmer()
-        binding.seriesShimmerLayout.visibility = View.GONE
     }
 
     override val layoutResId: Int

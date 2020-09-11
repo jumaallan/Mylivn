@@ -108,9 +108,6 @@ dependencies {
     // Lottie
     implementation(Libraries.lottie)
 
-    // Facebook Shimmer
-    implementation(Libraries.facebookShimmer)
-
     // Debug - for debug builds only
     implementation(Libraries.timber)
     implementation(Libraries.leakCanary)
