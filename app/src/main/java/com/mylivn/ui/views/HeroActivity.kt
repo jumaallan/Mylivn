@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import com.mylivn.R
 import com.mylivn.core.network.NetworkResult
+import com.mylivn.core.utils.hide
+import com.mylivn.core.utils.show
 import com.mylivn.data.local.mappers.toModel
 import com.mylivn.data.models.MarvelHero
 import com.mylivn.databinding.ActivityHeroBinding
@@ -116,21 +118,57 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
 
         comicsViewModel.getHeroComics(heroId)
             .observe(this@HeroActivity) {
-                comicsRecyclerViewAdapter.submitList(it.map { comics -> comics.toModel() })
+                if (it.isEmpty()) {
+                    emptyViewComics.show()
+                    tvComicsLabel.hide()
+                    recyclerViewHeroComics.hide()
+                } else {
+                    emptyViewComics.hide()
+                    tvComicsLabel.show()
+                    recyclerViewHeroComics.show()
+                    comicsRecyclerViewAdapter.submitList(it.map { comics -> comics.toModel() })
+                }
             }
 
         seriesViewModel.getHeroSeries(heroId)
             .observe(this@HeroActivity) {
-                seriesRecyclerViewAdapter.submitList(it.map { series -> series.toModel() })
+                if (it.isEmpty()) {
+                    emptyViewSeries.show()
+                    tvSeriesLabel.hide()
+                    recyclerViewHeroSeries.hide()
+                } else {
+                    emptyViewSeries.hide()
+                    tvSeriesLabel.show()
+                    recyclerViewHeroSeries.show()
+                    seriesRecyclerViewAdapter.submitList(it.map { series -> series.toModel() })
+                }
             }
 
         storiesViewModel.getHeroStories(heroId)
             .observe(this@HeroActivity) {
-                storiesRecyclerViewAdapter.submitList(it.map { stories -> stories.toModel() })
+                if (it.isEmpty()) {
+                    emptyViewStories.show()
+                    tvStoriesLabel.hide()
+                    recyclerViewHeroStories.hide()
+                } else {
+                    emptyViewStories.hide()
+                    tvStoriesLabel.show()
+                    recyclerViewHeroStories.show()
+                    storiesRecyclerViewAdapter.submitList(it.map { stories -> stories.toModel() })
+                }
             }
         eventsViewModel.getHeroEvents(heroId)
             .observe(this@HeroActivity) {
-                eventsRecyclerViewAdapter.submitList(it.map { events -> events.toModel() })
+                if (it.isEmpty()) {
+                    emptyViewEvents.show()
+                    tvEventsLabel.hide()
+                    recyclerViewHeroEvents.hide()
+                } else {
+                    emptyViewEvents.hide()
+                    tvEventsLabel.show()
+                    recyclerViewHeroEvents.show()
+                    eventsRecyclerViewAdapter.submitList(it.map { events -> events.toModel() })
+                }
             }
     }
 

@@ -141,4 +141,5 @@ dependencies {
     testImplementation(TestLibraries.coroutinesTest)
     testImplementation(TestLibraries.archComponentTest)
     testImplementation(TestLibraries.liveDataTesting)
+    testImplementation(TestLibraries.turbine)
 }
