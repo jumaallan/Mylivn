@@ -34,27 +34,6 @@ suspend fun <T> safeApiCall(
     }
 }
 
-suspend fun <T> flowSafeApiCall(
-    dispatcher: CoroutineDispatcher,
-    apiCall: suspend () -> T
-): Flow<NetworkResult<T>> = flow {
-    try {
-        emit(NetworkResult.Success(apiCall.invoke()))
-    } catch (throwable: Throwable) {
-        Timber.e(throwable)
-        when (throwable) {
-            is IOException -> emit(NetworkResult.NetworkError)
-            is HttpException -> {
-                val code = throwable.code()
-                val errorResponse = convertErrorBody(throwable)
-                emit(NetworkResult.ServerError(code, errorResponse))
-            }
-            else -> {
-                emit(NetworkResult.ServerError(null, null))
-            }
-        }
-    }
-}.flowOn(dispatcher)
 
 private fun convertErrorBody(throwable: HttpException): ErrorResponse? = try {
     throwable.response()?.errorBody()?.charStream()?.let {
@@ -65,19 +44,4 @@ private fun convertErrorBody(throwable: HttpException): ErrorResponse? = try {
 } catch (exception: Exception) {
     Timber.e(exception)
     null
-}
-
-inline fun <T> getResult(
-    response: Response<List<T>>,
-    onError: () -> NetworkResult.ServerError
-): NetworkResult<List<T>> {
-    if (response.isSuccessful) {
-        val body = response.body()
-        if (body != null) {
-            return NetworkResult.Success(body)
-        }
-    } else {
-        Timber.e(response.errorBody()?.string())
-    }
-    return onError.invoke()
 }
