@@ -13,6 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
 import org.junit.Before
+import org.robolectric.shadows.ShadowLog
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
@@ -64,6 +65,8 @@ internal open class BaseTest {
         heroDao = database.heroDao()
         seriesDao = database.seriesDao()
         storiesDao = database.storiesDao()
+
+        ShadowLog.stream = System.out
     }
 
     @After
