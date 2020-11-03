@@ -2,12 +2,8 @@ package com.mylivn.core.network
 
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
-import retrofit2.Response
 import timber.log.Timber
 import java.io.IOException
 
@@ -33,7 +29,6 @@ suspend fun <T> safeApiCall(
         }
     }
 }
-
 
 private fun convertErrorBody(throwable: HttpException): ErrorResponse? = try {
     throwable.response()?.errorBody()?.charStream()?.let {

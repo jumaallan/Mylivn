@@ -41,7 +41,6 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
         heroRecyclerViewAdapter = HeroRecyclerViewAdapter {
             fetchHeroDetails(it.heroId)
             updateVisibility(it)
-
         }
 
         recyclerViewHero.apply {
@@ -100,11 +99,11 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
     private fun updateVisibility(hero: MarvelHero) {
         val heroPosition = heroes.indexOf(hero)
         val newHero = hero.copy(
-            heroName = hero.heroName,
-            heroDescription = hero.heroDescription,
-            heroThumbnail = hero.heroThumbnail,
-            heroId = hero.heroId,
-            isSelected = true
+                heroName = hero.heroName,
+                heroDescription = hero.heroDescription,
+                heroThumbnail = hero.heroThumbnail,
+                heroId = hero.heroId,
+                isSelected = true
         )
         binding.hero = newHero
         heroRecyclerViewAdapter.notifyItemChanged(heroPosition, newHero)
@@ -112,64 +111,65 @@ class HeroActivity : BindingActivity<ActivityHeroBinding>() {
 
     private fun fetchHeroDetails(heroId: Int) {
         heroViewModel.getHero(heroId)
-            .observe(this@HeroActivity) {
-                binding.hero = it.toModel()
-            }
+                .observe(this@HeroActivity) {
+                    binding.hero = it.toModel()
+                }
 
         comicsViewModel.getHeroComics(heroId)
-            .observe(this@HeroActivity) {
-                if (it.isEmpty()) {
-                    emptyViewComics.show()
-                    tvComicsLabel.hide()
-                    recyclerViewHeroComics.hide()
-                } else {
-                    emptyViewComics.hide()
-                    tvComicsLabel.show()
-                    recyclerViewHeroComics.show()
-                    comicsRecyclerViewAdapter.submitList(it.map { comics -> comics.toModel() })
+                .observe(this@HeroActivity) {
+                    if (it.isEmpty()) {
+                        emptyViewComics.show()
+                        tvComicsLabel.hide()
+                        recyclerViewHeroComics.hide()
+                    } else {
+                        emptyViewComics.hide()
+                        tvComicsLabel.show()
+                        recyclerViewHeroComics.show()
+                        comicsRecyclerViewAdapter.submitList(it.map { comics -> comics.toModel() })
+                    }
                 }
-            }
 
         seriesViewModel.getHeroSeries(heroId)
-            .observe(this@HeroActivity) {
-                if (it.isEmpty()) {
-                    emptyViewSeries.show()
-                    tvSeriesLabel.hide()
-                    recyclerViewHeroSeries.hide()
-                } else {
-                    emptyViewSeries.hide()
-                    tvSeriesLabel.show()
-                    recyclerViewHeroSeries.show()
-                    seriesRecyclerViewAdapter.submitList(it.map { series -> series.toModel() })
+                .observe(this@HeroActivity) {
+                    if (it.isEmpty()) {
+                        emptyViewSeries.show()
+                        tvSeriesLabel.hide()
+                        recyclerViewHeroSeries.hide()
+                    } else {
+                        emptyViewSeries.hide()
+                        tvSeriesLabel.show()
+                        recyclerViewHeroSeries.show()
+                        seriesRecyclerViewAdapter.submitList(it.map { series -> series.toModel() })
+                    }
                 }
-            }
 
         storiesViewModel.getHeroStories(heroId)
-            .observe(this@HeroActivity) {
-                if (it.isEmpty()) {
-                    emptyViewStories.show()
-                    tvStoriesLabel.hide()
-                    recyclerViewHeroStories.hide()
-                } else {
-                    emptyViewStories.hide()
-                    tvStoriesLabel.show()
-                    recyclerViewHeroStories.show()
-                    storiesRecyclerViewAdapter.submitList(it.map { stories -> stories.toModel() })
+                .observe(this@HeroActivity) {
+                    if (it.isEmpty()) {
+                        emptyViewStories.show()
+                        tvStoriesLabel.hide()
+                        recyclerViewHeroStories.hide()
+                    } else {
+                        emptyViewStories.hide()
+                        tvStoriesLabel.show()
+                        recyclerViewHeroStories.show()
+                        storiesRecyclerViewAdapter.submitList(it.map { stories -> stories.toModel() })
+                    }
                 }
-            }
+
         eventsViewModel.getHeroEvents(heroId)
-            .observe(this@HeroActivity) {
-                if (it.isEmpty()) {
-                    emptyViewEvents.show()
-                    tvEventsLabel.hide()
-                    recyclerViewHeroEvents.hide()
-                } else {
-                    emptyViewEvents.hide()
-                    tvEventsLabel.show()
-                    recyclerViewHeroEvents.show()
-                    eventsRecyclerViewAdapter.submitList(it.map { events -> events.toModel() })
+                .observe(this@HeroActivity) {
+                    if (it.isEmpty()) {
+                        emptyViewEvents.show()
+                        tvEventsLabel.hide()
+                        recyclerViewHeroEvents.hide()
+                    } else {
+                        emptyViewEvents.hide()
+                        tvEventsLabel.show()
+                        recyclerViewHeroEvents.show()
+                        eventsRecyclerViewAdapter.submitList(it.map { events -> events.toModel() })
+                    }
                 }
-            }
     }
 
     override val layoutResId: Int

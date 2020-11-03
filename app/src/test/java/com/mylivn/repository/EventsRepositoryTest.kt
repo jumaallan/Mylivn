@@ -33,5 +33,4 @@ internal class EventsRepositoryTest : BaseTest() {
         assertThat(actual.eventName, `is`(expected.eventName))
         assertThat(actual.resourceURI, `is`(expected.resourceURI))
     }
-
 }

@@ -1,8 +1,6 @@
 package com.mylivn.core.utils
 
 import android.view.View
-import com.google.android.material.snackbar.Snackbar
-
 
 /**
  * Responsible for showing a view, toggle visibility to View.VISIBLE
